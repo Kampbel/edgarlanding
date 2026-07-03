@@ -25,6 +25,7 @@ const softwareTools = [
     shortName: 'InDesign',
     abbr: 'Id',
     color: '#FF3366',
+    logo: '/images/indesign.png',
   },
   {
     name: 'Adobe Premiere Pro',

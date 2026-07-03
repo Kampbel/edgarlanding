@@ -284,7 +284,8 @@ function BrandCarouselCard({ brand, onSelectProject, index }) {
                   ps: '/images/photoshop.png',
                   ai: '/images/illustrator.png',
                   pr: '/images/premiere.png',
-                  cv: '/images/canva.png'
+                  cv: '/images/canva.png',
+                  id: '/images/indesign.png'
                 };
                 const hasLogo = !!toolLogos[lowT];
                 return (
