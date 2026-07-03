@@ -1,14 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+
+const tools = [
+  { name: 'Ps',  logo: '/images/photoshop.png',   color: '#31A8FF', angle: 0   },
+  { name: 'Ai',  logo: '/images/illustrator.png',  color: '#FF9A00', angle: 72  },
+  { name: 'Id',  logo: '/images/indesign.png',     color: '#FF3366', angle: 144 },
+  { name: 'Pr',  logo: '/images/premiere.png',     color: '#9999FF', angle: 216 },
+  { name: 'Ca',  logo: '/images/canva.png',        color: '#00C4CC', angle: 288 },
+];
 
 export default function Hero() {
-  const sectionRef    = useRef(null);
-  const bgRef         = useRef(null);
-  const midRef        = useRef(null);
-  const contentRef    = useRef(null);
-  const particlesRef  = useRef(null);
-  const mouseRef      = useRef({ x: 0, y: 0 });
-  const rafRef        = useRef(null);
+  const sectionRef   = useRef(null);
+  const bgRef        = useRef(null);
+  const contentRef   = useRef(null);
+  const visualRef    = useRef(null);
+  const mouseRef     = useRef({ x: 0, y: 0 });
+  const rafRef       = useRef(null);
 
   // ── Scroll parallax ──────────────────────────────────────────────
   useEffect(() => {
@@ -17,28 +23,25 @@ export default function Hero() {
       const y = window.scrollY;
       const h = sectionRef.current.offsetHeight;
       if (y > h) return;
-
       if (bgRef.current)
-        bgRef.current.style.transform = `translateY(${y * 0.55}px) scale(1.08)`;
-
-      if (midRef.current)
-        midRef.current.style.transform = `translateY(${y * 0.28}px)`;
-
+        bgRef.current.style.transform = `translateY(${y * 0.5}px) scale(1.08)`;
       if (contentRef.current) {
-        contentRef.current.style.transform = `translateY(${y * -0.08}px)`;
-        contentRef.current.style.opacity   = `${Math.max(0, 1 - y / (h * 0.7))}`;
+        contentRef.current.style.transform = `translateY(${y * -0.06}px)`;
+        contentRef.current.style.opacity   = `${Math.max(0, 1 - y / (h * 0.75))}`;
+      }
+      if (visualRef.current) {
+        visualRef.current.style.transform = `translateY(${y * -0.04}px)`;
+        visualRef.current.style.opacity   = `${Math.max(0, 1 - y / (h * 0.85))}`;
       }
     };
-
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // ── Mouse tilt / magnetic parallax ───────────────────────────────
+  // ── Mouse magnetic parallax ───────────────────────────────────────
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
     const onMove = (e) => {
       const rect = section.getBoundingClientRect();
       mouseRef.current = {
@@ -46,21 +49,16 @@ export default function Hero() {
         y: (e.clientY - rect.top)  / rect.height - 0.5,
       };
     };
-
     const tick = () => {
       const { x, y } = mouseRef.current;
       if (bgRef.current)
-        bgRef.current.style.transform += ` translate(${x * -18}px, ${y * -10}px)`;
-      if (midRef.current)
-        midRef.current.style.transform += ` translate(${x * -10}px, ${y * -6}px)`;
-      if (particlesRef.current)
-        particlesRef.current.style.transform = `translate(${x * 20}px, ${y * 12}px)`;
+        bgRef.current.style.transform += ` translate(${x * -14}px, ${y * -8}px)`;
+      if (visualRef.current)
+        visualRef.current.style.transform += ` translate(${x * 8}px, ${y * 5}px)`;
       rafRef.current = requestAnimationFrame(tick);
     };
-
     section.addEventListener('mousemove', onMove, { passive: true });
     rafRef.current = requestAnimationFrame(tick);
-
     return () => {
       section.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(rafRef.current);
@@ -73,60 +71,55 @@ export default function Hero() {
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
   };
 
-  // ── Floating particles data (stable) ─────────────────────────────
-  const particles = Array.from({ length: 22 }, (_, i) => ({
-    id: i,
-    size:  2 + (i * 3.7 % 5),
-    left:  (i * 17 + 5)  % 95,
-    top:   (i * 23 + 8)  % 90,
-    delay: (i * 0.37)    % 6,
-    dur:   5 + (i * 1.1) % 5,
+  // ── Floating particles ────────────────────────────────────────────
+  const particles = Array.from({ length: 28 }, (_, i) => ({
+    id: i, size: 2 + (i * 3.7 % 5),
+    left: (i * 17 + 5) % 95, top: (i * 23 + 8) % 90,
+    delay: (i * 0.37) % 6, dur: 5 + (i * 1.1) % 5,
   }));
 
   return (
     <section ref={sectionRef} id="inicio" className="hero-section">
 
-      {/* ── Layer 0: background image – slowest ── */}
+      {/* ── BG image layer ── */}
       <div ref={bgRef} className="hero-layer hero-layer--bg"
         style={{ backgroundImage: "url('/images/Portafolio/Inicio/portada/Captura%20de%20pantalla%202026-06-23%20182544.png')" }}
       />
 
-      {/* ── Layer 1: colour gradient overlays ── */}
+      {/* ── Gradient overlays ── */}
       <div className="hero-gradient-base" />
       <div className="hero-gradient-radial" />
       <div className="hero-gradient-bottom" />
 
-      {/* ── Layer 2: design grid lines ── */}
-      <div ref={midRef} className="hero-layer hero-layer--grid" />
+      {/* ── Grid lines ── */}
+      <div className="hero-layer hero-layer--grid" />
 
-      {/* ── Layer 3: floating particles ── */}
-      <div ref={particlesRef} className="hero-particles">
+      {/* ── Particles ── */}
+      <div className="hero-particles">
         {particles.map(p => (
-          <span
-            key={p.id}
-            className="hero-particle"
-            style={{
-              width:            `${p.size}px`,
-              height:           `${p.size}px`,
-              left:             `${p.left}%`,
-              top:              `${p.top}%`,
-              animationDelay:   `${p.delay}s`,
-              animationDuration:`${p.dur}s`,
-            }}
-          />
+          <span key={p.id} className="hero-particle" style={{
+            width: `${p.size}px`, height: `${p.size}px`,
+            left: `${p.left}%`, top: `${p.top}%`,
+            animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`,
+          }} />
         ))}
       </div>
 
-      {/* ── Layer 4: accent shapes ── */}
+      {/* ── Accent shapes ── */}
       <div className="hero-shape hero-shape--ring" />
       <div className="hero-shape hero-shape--blob" />
-      <div className="hero-shape hero-shape--line-h" />
-      <div className="hero-shape hero-shape--line-v" />
 
-      {/* ── Content ── */}
+      {/* ── Two-column layout ── */}
       <div className="hero-container container">
+
+        {/* LEFT: text content */}
         <div ref={contentRef} className="hero-content">
 
+          {/* Availability badge */}
+          <div className="hero-badge animate-fade-in-up-delay-1">
+            <span className="hero-badge__dot" />
+            Disponible para proyectos
+          </div>
 
           <h1 className="hero-title animate-fade-in-up-delay-1">
             EDGAR<br />
@@ -134,6 +127,7 @@ export default function Hero() {
           </h1>
 
           <div className="hero-role animate-fade-in-up-delay-2">
+            <span className="hero-role__line" />
             <span className="hero-role__text">Diseñador Gráfico</span>
           </div>
 
@@ -154,20 +148,65 @@ export default function Hero() {
 
           {/* Stats row */}
           <div className="hero-stats animate-fade-in-up-delay-4">
-            <div className="hero-stat">
-              <strong>9+</strong>
-              <span>Marcas</span>
-            </div>
+            <div className="hero-stat"><strong>9+</strong><span>Marcas</span></div>
             <div className="hero-stat-div" />
-            <div className="hero-stat">
-              <strong>50+</strong>
-              <span>Proyectos</span>
-            </div>
+            <div className="hero-stat"><strong>50+</strong><span>Proyectos</span></div>
             <div className="hero-stat-div" />
-            <div className="hero-stat">
-              <strong>1</strong>
-              <span>Año exp.</span>
-            </div>
+            <div className="hero-stat"><strong>1</strong><span>Año exp.</span></div>
+          </div>
+        </div>
+
+        {/* RIGHT: visual panel */}
+        <div ref={visualRef} className="hero-visual animate-fade-in-right">
+
+          {/* Decorative rings */}
+          <div className="hero-visual__ring hero-visual__ring--outer" />
+          <div className="hero-visual__ring hero-visual__ring--mid" />
+          <div className="hero-visual__ring hero-visual__ring--inner" />
+
+          {/* Profile photo */}
+          <div className="hero-visual__photo-wrap">
+            <div className="hero-visual__photo-glow" />
+            <img
+              src="/images/FOTO MIA/EDGAR.png"
+              alt="Edgar Santos – Diseñador Gráfico"
+              className="hero-visual__photo"
+            />
+          </div>
+
+          {/* Floating tool badges around the orbit */}
+          {tools.map((t) => {
+            const rad = (t.angle - 90) * (Math.PI / 180);
+            const r   = 52; // orbit radius in %
+            const cx  = 50 + r * Math.cos(rad);
+            const cy  = 50 + r * Math.sin(rad);
+            return (
+              <div
+                key={t.name}
+                className="hero-tool-badge"
+                style={{
+                  left: `${cx}%`,
+                  top:  `${cy}%`,
+                  '--badge-color': t.color,
+                  animationDelay: `${t.angle / 360 * 2}s`,
+                }}
+                title={t.name}
+              >
+                <img src={t.logo} alt={t.name} />
+              </div>
+            );
+          })}
+
+          {/* Floating card: "Diseño Gráfico" label */}
+          <div className="hero-float-card hero-float-card--top">
+            <span className="hero-float-card__icon">✦</span>
+            <span>Branding & Editorial</span>
+          </div>
+
+          {/* Floating card: "Social Media" label */}
+          <div className="hero-float-card hero-float-card--bottom">
+            <span className="hero-float-card__icon">◈</span>
+            <span>Social Media</span>
           </div>
         </div>
       </div>
@@ -176,9 +215,7 @@ export default function Hero() {
       <div className="hero-scroll-indicator animate-hero-bounce">
         <a href="#sobre-mi" onClick={e => scrollTo('sobre-mi', e)}>
           <span>Scroll</span>
-          <div className="hero-scroll-line">
-            <div className="hero-scroll-dot" />
-          </div>
+          <div className="hero-scroll-line"><div className="hero-scroll-dot" /></div>
         </a>
       </div>
 
