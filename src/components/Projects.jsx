@@ -64,8 +64,7 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/CLUB DE GESTION DE RIESGO/arte para Webinar_.png'
     ],
     links: [
-      { label: 'Instagram', url: 'https://www.instagram.com/gestionriesgodr' },
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/company/club-de-gesti%C3%B3n-de-riesgos-rd/' }
+      { label: 'Instagram', url: 'https://www.instagram.com/gestionriesgodr' }
     ]
   },
   {
@@ -128,7 +127,7 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 FEBRERO AVIAT.png'
     ],
     links: [
-      { label: 'Sitio Web', url: 'https://aviat.com.do' },
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/company/aviatrd/' },
       { label: 'Instagram', url: 'https://www.instagram.com/aviat_rd?igsh=c253a3N6cHk1cjBy' }
     ]
   },
