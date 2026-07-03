@@ -452,7 +452,7 @@ body {
   left: 0;
   right: 0;
   height: 40%;
-  background: linear-gradient(to top, #050814 0%, transparent 100%);
+  background: linear-gradient(to top, var(--bg-secondary) 0%, transparent 100%);
   z-index: 3;
 }
 
@@ -3367,19 +3367,26 @@ a.contact-detail-value:hover {
   }
 }
 
-/* Behance divider */
-.behance-divider {
+/* Organic section transition curves */
+.section-curve {
+  position: absolute;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+  height: 80px;
+  z-index: 5;
+  pointer-events: none;
 }
 
-.behance-divider img {
+.section-curve--top {
+  top: 0;
+}
+
+.section-curve--bottom {
+  bottom: 0;
+}
+
+.section-curve svg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
