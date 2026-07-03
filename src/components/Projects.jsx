@@ -106,6 +106,42 @@ const professionalBrands = [
     ]
   },
   {
+    id: 'aviat',
+    title: 'Aviation Services Group',
+    subtitle: 'Servicios Aeronáuticos y VIP',
+    category: 'social-media',
+    type: 'profesional',
+    description: 'Desarrollo de contenido visual y línea gráfica corporativa para sus redes de LinkedIn e Instagram. Se diseñaron publicaciones limpias y corporativas destinadas a promover sus servicios de transporte aéreo, consultoría aeronáutica y atención VIP.',
+    tools: ['Ps'],
+    logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192631.png',
+    images: [
+      '/images/TRABAJOS PROFESIONAL/AVIAT/LINKEDIN POST 4 AVIAT OCUTBRE_.png',
+      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 11 AVIAT MAYO.png',
+      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 14 AVIAT NOVIEMBRE_.png',
+      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 2 AVIAT DICIEMBRE_.png',
+      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 CARRUSEL 3 AVIAT MAYO.png',
+      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 FEBRERO AVIAT.png'
+    ]
+  },
+  {
+    id: 'cesfront',
+    title: 'CESFRONT',
+    subtitle: 'Seguridad Fronteriza Terrestre',
+    category: 'social-media',
+    type: 'profesional',
+    description: 'Diseño y diagramación de efemérides patrias, institucionales y publicaciones oficiales para redes sociales. Se creó una estética visualmente imponente e institucional que proyecta la identidad del Cuerpo Especializado y el orgullo nacional.',
+    tools: ['Ps', 'Ai'],
+    logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192712.png',
+    images: [
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 2.png',
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 3.png',
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 5.png',
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 7.png',
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 8.png',
+      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 9.png'
+    ]
+  },
+  {
     id: 'birria',
     title: "Birria & Ma' Na'",
     subtitle: 'Marca Gastronómica',
