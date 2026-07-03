@@ -69,7 +69,7 @@ const professionalBrands = [
     subtitle: 'Servicios de Transporte Premium',
     category: 'social-media',
     type: 'profesional',
-    description: 'Diseño de contenido estratégico para redes sociales enfocado en el sector corporativo y turístico VIP. Se proyectó una estética sobria y exclusiva, utilizando fotografía de alta gama combinada con layouts tipográficos minimalistas y elegantes.',
+    description: 'Diseño de contenido strategic para redes sociales enfocado en el sector corporativo y turístico VIP. Se proyectó una estética sobria y exclusiva, utilizando fotografía de alta gama combinada con layouts tipográficos minimalistas y elegantes.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192542.png',
     images: [
@@ -157,95 +157,168 @@ const TOOL_LOGOS = {
   id: '/images/indesign.png'
 };
 
-// ── Image Gallery for Projects ──────────────────────────────────────────────
-function ProjectsImageGallery({ project, onSelectProject }) {
-  const [slideIdx, setSlideIdx] = useState(0);
+// ── Individual Brand Card (Alternating List Form) ──────────────────────────
+function BrandCard({ brand, onSelectProject, index }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const timerRef = useRef(null);
 
+  // Autoplay
   useEffect(() => {
-    setSlideIdx(0);
-  }, [project.id]);
+    if (isHovered) return;
+    timerRef.current = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % brand.images.length);
+    }, 4500);
+    return () => clearInterval(timerRef.current);
+  }, [isHovered, brand.images.length]);
 
-  const prevSlide = (e) => {
+  const prev = (e) => {
     e.stopPropagation();
-    setSlideIdx(i => (i - 1 + project.images.length) % project.images.length);
+    setCurrentSlide(prev => (prev - 1 + brand.images.length) % brand.images.length);
   };
-  const nextSlide = (e) => {
+  const next = (e) => {
     e.stopPropagation();
-    setSlideIdx(i => (i + 1) % project.images.length);
+    setCurrentSlide(prev => (prev + 1) % brand.images.length);
   };
+
+  const isReversed = index % 2 !== 0;
+  const progress = ((currentSlide + 1) / brand.images.length) * 100;
 
   return (
-    <div className="projects-gallery-inner" onClick={() => onSelectProject(project)}>
-      <img
-        src={project.images[slideIdx]}
-        alt={`${project.title} – imagen ${slideIdx + 1}`}
-        className="projects-gallery-img"
-        loading="lazy"
-      />
-
-      <div className="projects-gallery-hint">
-        <div className="projects-gallery-hint__icon">
-          <Eye size={22} />
-        </div>
-        <span>Ver galería completa</span>
+    <div className={`brand-card reveal ${isReversed ? 'brand-card--reversed' : ''}`}>
+      
+      {/* Local progress bar at the top of the card */}
+      <div className="brand-card__progress">
+        <div className="brand-card__progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
-      {project.images.length > 1 && (
-        <>
-          <button className="projects-gallery-arrow projects-gallery-arrow--prev" onClick={prevSlide} aria-label="Anterior">
-            <ChevronLeft size={16} />
-          </button>
-          <button className="projects-gallery-arrow projects-gallery-arrow--next" onClick={nextSlide} aria-label="Siguiente">
-            <ChevronRight size={16} />
-          </button>
+      {/* LEFT / RIGHT: Image Carousel */}
+      <div
+        className="brand-card__carousel"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="brand-card__slides" onClick={() => onSelectProject(brand)}>
+          {brand.images.map((img, idx) => (
+            <div
+              key={idx}
+              className={`brand-card__slide ${idx === currentSlide ? 'active' : ''}`}
+            >
+              <img src={img} alt={`${brand.title} – imagen ${idx + 1}`} loading="lazy" />
+              <div className="brand-card__zoom-hint">
+                <div className="brand-card__zoom-icon">
+                  <Eye size={22} />
+                </div>
+                <span>Ver galería completa</span>
+              </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Thumbnail strip inside gallery */}
-          <div className="projects-thumb-strip">
-            {project.images.map((img, i) => (
-              <button
-                key={i}
-                className={`projects-thumb ${i === slideIdx ? 'active' : ''}`}
-                onClick={(e) => { e.stopPropagation(); setSlideIdx(i); }}
-              >
-                <img src={img} alt={`thumb ${i + 1}`} />
-              </button>
-            ))}
+        {brand.images.length > 1 && (
+          <>
+            <button className="brand-card__arrow brand-card__arrow--prev" onClick={prev} aria-label="Anterior">
+              <ChevronLeft size={20} />
+            </button>
+            <button className="brand-card__arrow brand-card__arrow--next" onClick={next} aria-label="Siguiente">
+              <ChevronRight size={20} />
+            </button>
+            
+            {/* Slide thumbnails inside card */}
+            <div className="brand-card__thumb-strip">
+              {brand.images.map((img, i) => (
+                <button
+                  key={i}
+                  className={`brand-card__thumb ${i === currentSlide ? 'active' : ''}`}
+                  onClick={(e) => { e.stopPropagation(); setCurrentSlide(i); }}
+                >
+                  <img src={img} alt={`miniature ${i + 1}`} />
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* RIGHT / LEFT: Info Panel */}
+      <div className="brand-card__info">
+        
+        {/* Project large index number (Academic style) */}
+        <div className="brand-card__index-counter">
+          <span className="brand-card__index-current">{String(index + 1).padStart(2, '0')}</span>
+          <span className="brand-card__index-sep">/</span>
+          <span className="brand-card__index-total">{String(professionalBrands.length).padStart(2, '0')}</span>
+        </div>
+
+        {/* Category tag */}
+        <div className="brand-card__category-badge">
+          <InstagramIcon size={12} style={{ color: '#2b5cff' }} />
+          <span>Social Media</span>
+        </div>
+
+        <h3 className="brand-card__title">{brand.title}</h3>
+        <p className="brand-card__subtitle">{brand.subtitle}</p>
+        <p className="brand-card__description">{brand.description}</p>
+
+        {/* Tools */}
+        {brand.tools?.length > 0 && (
+          <div className="brand-card__tools" style={{ marginTop: '0.3rem' }}>
+            <span className="tools-label">Herramientas:</span>
+            <div className="tools-list">
+              {brand.tools.map((t, idx) => {
+                const logo = TOOL_LOGOS[t.toLowerCase()];
+                return (
+                  <div
+                    key={idx}
+                    className={`tool-badge badge-${t.toLowerCase()}`}
+                    title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : t}
+                    style={{ background: logo ? 'transparent' : undefined, boxShadow: logo ? 'none' : undefined, padding: 0 }}
+                  >
+                    {logo ? <img src={logo} alt={t} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} /> : t}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </>
-      )}
+        )}
+
+        {/* Links */}
+        {brand.links?.length > 0 && (
+          <div className="brand-card__tools" style={{ marginTop: '0.4rem' }}>
+            <span className="tools-label">Enlaces:</span>
+            <div className="tools-list">
+              {brand.links.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="brand-link-btn"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: '#1e42d9' }}
+                >
+                  <InstagramIcon size={13} />
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <button
+          className="brand-card__view-btn"
+          onClick={() => onSelectProject(brand)}
+        >
+          <Eye size={16} />
+          Ver galería completa
+        </button>
+      </div>
+
     </div>
   );
 }
 
 // ── Main Projects Component ──────────────────────────────────────────────────
 export default function Projects({ onSelectProject }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const autoPlayRef = useRef(null);
-
-  const goTo = (idx) => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentIndex(idx);
-      setIsTransitioning(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    autoPlayRef.current = setInterval(() => {
-      setCurrentIndex(i => (i + 1) % professionalBrands.length);
-    }, 6000);
-    return () => clearInterval(autoPlayRef.current);
-  }, []);
-
-  const stopAutoPlay = () => clearInterval(autoPlayRef.current);
-  const prev = () => { stopAutoPlay(); goTo((currentIndex - 1 + professionalBrands.length) % professionalBrands.length); };
-  const next = () => { stopAutoPlay(); goTo((currentIndex + 1) % professionalBrands.length); };
-
-  const currentProject = professionalBrands[currentIndex] || professionalBrands[0];
-  const progress = ((currentIndex + 1) / professionalBrands.length) * 100;
-
   return (
     <section id="proyectos" className="projects-section">
       <div className="container">
@@ -262,132 +335,16 @@ export default function Projects({ onSelectProject }) {
           </div>
         </div>
 
-        {/* Unified Carousel Container */}
-        <div className="projects-carousel-container reveal">
-          
-          {/* Progress bar */}
-          <div className="projects-progress-bar">
-            <div className="projects-progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-
-          <div className={`projects-carousel-card ${isTransitioning ? 'pj-fade-out' : 'pj-fade-in'}`}>
-            
-            {/* LEFT: Image Gallery */}
-            <div className="projects-carousel-image-wrap">
-              <ProjectsImageGallery 
-                project={currentProject} 
-                onSelectProject={onSelectProject} 
-              />
-            </div>
-
-            {/* RIGHT: Project Info */}
-            <div className="projects-carousel-info">
-              
-              {/* Counter */}
-              <div className="projects-counter">
-                <span className="projects-counter__current">{String(currentIndex + 1).padStart(2, '0')}</span>
-                <span className="projects-counter__sep">/</span>
-                <span className="projects-counter__total">{String(professionalBrands.length).padStart(2, '0')}</span>
-              </div>
-
-              {/* Category tag */}
-              <div className="projects-category-badge">
-                <InstagramIcon size={12} style={{ color: '#2b5cff' }} />
-                <span>Social Media</span>
-              </div>
-
-              <h3 className="projects-carousel-title">{currentProject.title}</h3>
-              <p className="projects-carousel-subtitle">{currentProject.subtitle}</p>
-              <p className="projects-carousel-desc">{currentProject.description}</p>
-
-              {/* Tools */}
-              {currentProject.tools?.length > 0 && (
-                <div className="brand-card__tools">
-                  <span className="tools-label">Herramientas:</span>
-                  <div className="tools-list">
-                    {currentProject.tools.map((t, idx) => {
-                      const logo = TOOL_LOGOS[t.toLowerCase()];
-                      return (
-                        <div
-                          key={idx}
-                          className={`tool-badge badge-${t.toLowerCase()}`}
-                          title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : t}
-                          style={{ background: logo ? 'transparent' : undefined, boxShadow: logo ? 'none' : undefined, padding: 0 }}
-                        >
-                          {logo ? <img src={logo} alt={t} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} /> : t}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Links */}
-              {currentProject.links?.length > 0 && (
-                <div className="brand-card__tools" style={{ marginTop: '0.4rem' }}>
-                  <span className="tools-label">Enlaces:</span>
-                  <div className="tools-list">
-                    {currentProject.links.map((link, idx) => (
-                      <a
-                        key={idx}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="brand-link-btn"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: '#1e42d9' }}
-                      >
-                        <InstagramIcon size={13} />
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <button className="projects-carousel-view-btn" onClick={() => onSelectProject(currentProject)}>
-                <Eye size={16} />
-                Ver proyecto completo
-              </button>
-
-              {/* Mini Brand Nav thumbnails */}
-              {professionalBrands.length > 1 && (
-                <div className="projects-mini-nav">
-                  {professionalBrands.map((p, idx) => (
-                    <button
-                      key={p.id}
-                      className={`projects-mini-thumb ${idx === currentIndex ? 'active' : ''}`}
-                      onClick={() => { stopAutoPlay(); goTo(idx); }}
-                      title={p.title}
-                    >
-                      <img src={p.images[0]} alt={p.title} />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-          </div>
-
-          {/* Navigation controls */}
-          <div className="projects-carousel-controls">
-            <button className="projects-carousel-arrow" onClick={prev} aria-label="Anterior">
-              <ChevronLeft size={24} />
-            </button>
-            <div className="projects-carousel-dots">
-              {professionalBrands.map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`projects-carousel-dot ${idx === currentIndex ? 'active' : ''}`}
-                  onClick={() => { stopAutoPlay(); goTo(idx); }}
-                  aria-label={`Proyecto ${idx + 1}`}
-                />
-              ))}
-            </div>
-            <button className="projects-carousel-arrow" onClick={next} aria-label="Siguiente">
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
+        {/* Alternating Brand Cards List */}
+        <div className="brands-list" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+          {professionalBrands.map((brand, index) => (
+            <BrandCard
+              key={brand.id}
+              brand={brand}
+              index={index}
+              onSelectProject={onSelectProject}
+            />
+          ))}
         </div>
 
       </div>

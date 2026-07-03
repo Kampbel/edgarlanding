@@ -3415,7 +3415,7 @@ a.contact-detail-value:hover {
 .academic-filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 /* ===================================================================
-   PROJECTS SECTION (Social Media Carousel)
+   PROJECTS SECTION (Social Media Alternating Brand Cards)
    =================================================================== */
 
 .projects-header {
@@ -3430,49 +3430,90 @@ a.contact-detail-value:hover {
   color: var(--text-secondary);
 }
 
-.projects-carousel-container {
+.brands-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 5rem;
   width: 100%;
 }
 
-/* Progress bar */
-.projects-progress-bar {
+.brand-card {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  background: #ffffff;
+  border: 1px solid rgba(18, 25, 38, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(18, 25, 38, 0.04), 0 0 0 1px rgba(18, 25, 38, 0.01);
+  min-height: 500px;
+  position: relative;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(18, 25, 38, 0.08), 0 0 0 1px rgba(18, 25, 38, 0.01);
+}
+
+.brand-card--reversed .brand-card__carousel {
+  order: 2;
+}
+.brand-card--reversed .brand-card__info {
+  order: 1;
+}
+
+/* Local progress bar at the top of each brand card */
+.brand-card__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 2px;
-  background: rgba(18, 25, 38, 0.04);
-  border-radius: 2px;
+  height: 3px;
+  background: rgba(18, 25, 38, 0.03);
+  z-index: 5;
+}
+
+.brand-card__progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #1e42d9, #2b5cff, #769bff);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-card__carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #faf8f5;
   overflow: hidden;
 }
 
-.projects-progress-fill {
-  height: 100%;
-  background: linear-gradient(to right, #1e42d9, #2b5cff, #769bff);
-  border-radius: 2px;
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.projects-gallery-inner {
-  position: relative;
+.brand-card__slides {
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
 
-.projects-gallery-img {
+.brand-card__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 1;
+}
+
+.brand-card__slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.brand-card__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
 }
 
-.projects-gallery-inner:hover .projects-gallery-img {
-  transform: scale(1.03);
-}
-
-.projects-gallery-hint {
+.brand-card__zoom-hint {
   position: absolute;
   inset: 0;
   background: rgba(18, 25, 38, 0.6);
@@ -3486,19 +3527,11 @@ a.contact-detail-value:hover {
   z-index: 2;
 }
 
-.projects-gallery-inner:hover .projects-gallery-hint {
+.brand-card__carousel:hover .brand-card__zoom-hint {
   opacity: 1;
 }
 
-.projects-gallery-hint span {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #fff;
-}
-
-.projects-gallery-hint__icon {
+.brand-card__zoom-icon {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -3510,7 +3543,15 @@ a.contact-detail-value:hover {
   color: #fff;
 }
 
-.projects-gallery-arrow {
+.brand-card__zoom-hint span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.brand-card__arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -3524,20 +3565,26 @@ a.contact-detail-value:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  opacity: 0;
+  transition: all 0.25s ease;
   z-index: 3;
 }
 
-.projects-gallery-arrow:hover {
+.brand-card__carousel:hover .brand-card__arrow {
+  opacity: 1;
+}
+
+.brand-card__arrow--prev { left: 1rem; }
+.brand-card__arrow--next { right: 1rem; }
+
+.brand-card__arrow:hover {
   background: var(--accent);
   color: #fff;
   border-color: transparent;
 }
 
-.projects-gallery-arrow--prev { left: 1rem; }
-.projects-gallery-arrow--next { right: 1rem; }
-
-.projects-thumb-strip {
+/* Local slide thumbnails strip inside brand card image area */
+.brand-card__thumb-strip {
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -3549,10 +3596,10 @@ a.contact-detail-value:hover {
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.projects-thumb {
+.brand-card__thumb {
   width: 36px;
   height: 36px;
   border-radius: 6px;
@@ -3565,12 +3612,13 @@ a.contact-detail-value:hover {
   flex-shrink: 0;
 }
 
-.projects-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.projects-thumb.active { border-color: #2b5cff; transform: scale(1.1); }
-.projects-thumb:hover  { border-color: rgba(43, 92, 255, 0.5); }
+.brand-card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.brand-card__thumb.active { border-color: #2b5cff; transform: scale(1.1); }
+.brand-card__thumb:hover  { border-color: rgba(43, 92, 255, 0.5); }
 
-.projects-carousel-info {
-  padding: 2.75rem 3rem;
+/* Info panel */
+.brand-card__info {
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3578,13 +3626,14 @@ a.contact-detail-value:hover {
   overflow-y: auto;
 }
 
-.projects-counter {
+/* Big index number style */
+.brand-card__index-counter {
   display: flex;
   align-items: baseline;
   gap: 0.3rem;
 }
 
-.projects-counter__current {
+.brand-card__index-current {
   font-family: var(--font-heading);
   font-size: 3rem;
   font-weight: 800;
@@ -3592,20 +3641,21 @@ a.contact-detail-value:hover {
   line-height: 1;
 }
 
-.projects-counter__sep {
+.brand-card__index-sep {
   font-size: 1rem;
   color: rgba(18, 25, 38, 0.15);
   font-weight: 300;
 }
 
-.projects-counter__total {
+.brand-card__index-total {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 700;
   color: rgba(18, 25, 38, 0.25);
 }
 
-.projects-category-badge {
+/* Category badge */
+.brand-card__category-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -3621,7 +3671,7 @@ a.contact-detail-value:hover {
   width: fit-content;
 }
 
-.projects-carousel-title {
+.brand-card__title {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   font-weight: 800;
@@ -3629,7 +3679,7 @@ a.contact-detail-value:hover {
   line-height: 1.15;
 }
 
-.projects-carousel-subtitle {
+.brand-card__subtitle {
   font-family: var(--font-subtitle);
   font-size: 1.1rem;
   font-weight: 600;
@@ -3637,13 +3687,20 @@ a.contact-detail-value:hover {
   margin-top: -0.5rem;
 }
 
-.projects-carousel-desc {
+.brand-card__description {
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--text-muted);
 }
 
-.projects-carousel-view-btn {
+.brand-card__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.brand-card__view-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -3662,105 +3719,61 @@ a.contact-detail-value:hover {
   margin-top: 1rem;
 }
 
-.projects-carousel-view-btn:hover {
+.brand-card__view-btn:hover {
   background: var(--accent);
   color: #fff;
   box-shadow: 0 4px 15px rgba(43, 92, 255, 0.25);
 }
 
-.projects-mini-nav {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-  border-top: 1px solid rgba(18, 25, 38, 0.06);
-  padding-top: 1rem;
-}
-
-.projects-mini-thumb {
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  background: none;
-  padding: 0;
-  flex-shrink: 0;
-  opacity: 0.5;
-}
-
-.projects-mini-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.projects-mini-thumb.active { border-color: #2b5cff; opacity: 1; transform: scale(1.05); }
-.projects-mini-thumb:hover  { opacity: 0.9; border-color: rgba(43, 92, 255, 0.4); }
-
-.projects-carousel-controls {
-  display: flex;
+.brand-link-btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.projects-carousel-arrow {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(18, 25, 38, 0.04);
-  border: 1px solid rgba(18, 25, 38, 0.08);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(43, 92, 255, 0.15);
+  border-radius: 100px;
+  background-color: rgba(43, 92, 255, 0.03);
+  color: #2b5cff;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all var(--transition-fast);
 }
 
-.projects-carousel-arrow:hover {
-  background: var(--accent);
-  border-color: transparent;
+.brand-link-btn:hover {
+  background-color: var(--accent);
   color: #fff;
-  transform: scale(1.05);
+  border-color: transparent;
+  transform: translateY(-1px);
 }
 
-.projects-carousel-dots {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.projects-carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(18, 25, 38, 0.1);
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.projects-carousel-dot:hover {
-  background: rgba(18, 25, 38, 0.3);
-}
-
-.projects-carousel-dot.active {
-  background: #2b5cff;
-  transform: scale(1.2);
-  box-shadow: 0 0 8px rgba(43, 92, 255, 0.4);
-}
-
-@media (max-width: 900px) {
-  .projects-carousel-card {
+@media (max-width: 1024px) {
+  .brand-card {
     grid-template-columns: 1fr;
-    min-height: auto;
+    min-height: unset;
   }
-  .projects-carousel-image-wrap {
+
+  .brand-card--reversed .brand-card__carousel,
+  .brand-card--reversed .brand-card__info {
+    order: unset;
+  }
+
+  .brand-card__carousel {
     aspect-ratio: 4/3;
   }
-  .projects-carousel-info {
-    padding: 2rem;
+
+  .brand-card__info {
+    padding: 3rem 2.5rem;
   }
-  .projects-carousel-title {
-    font-size: 1.75rem;
+}
+
+@media (max-width: 600px) {
+  .brand-card__info {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .brand-card__title {
+    font-size: 1.5rem;
   }
 }
 
