@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { Eye, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
+import InstagramIcon from './InstagramIcon';
 
 const professionalBrands = [
   {
@@ -98,54 +98,11 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 2 AIE MARZO_.png',
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 3  CARRUSEL 1 AIE MARZO_.png',
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 3 CARRSUEL 2 AIE MARZO_.png',
-      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 7 CARRSUEL 1 AIE MARZO_.png',
-      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 9 CARRSUEL 1 AIE MARZO_.png'
+      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 4 AIE MARZO_.png',
+      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 5 AIE MARZO_.png'
     ],
     links: [
-      { label: 'Instagram', url: 'https://www.instagram.com/aie.constructora?igsh=Njh5aXU3dTFudmY=' }
-    ]
-  },
-  {
-    id: 'cesfront',
-    title: 'CESFRONT',
-    subtitle: 'Efemérides Patrias & Redes Sociales',
-    category: 'social-media',
-    type: 'profesional',
-    description: 'Diseño editorial de efemérides patrias y piezas comunicacionales para el Cuerpo Especializado en Seguridad Fronteriza Terrestre. Enfoque solemne y patriótico que respeta la identidad institucional y los símbolos nacionales.',
-    tools: ['Ps'],
-    logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192631.png',
-    images: [
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 2.png',
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 3.png',
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 5.png',
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 7.png',
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 8.png',
-      '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 9.png'
-    ],
-    links: [
-      { label: 'Instagram', url: 'https://www.instagram.com/cesfrontrd?igsh=M2lzMmppbWVqcnpj' }
-    ]
-  },
-  {
-    id: 'aviat',
-    title: 'Aviat',
-    subtitle: 'Servicios de Aviación & Logística',
-    category: 'social-media',
-    type: 'profesional',
-    description: 'Gestión visual y diseño de contenidos estratégicos para LinkedIn e Instagram. Enfoque dinámico que resalta la eficiencia operativa, seguridad y el alcance global de sus servicios aeronáuticos a través de composiciones modernas.',
-    tools: ['Ps'],
-    logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192712.png',
-    images: [
-      '/images/TRABAJOS PROFESIONAL/AVIAT/LINKEDIN POST 4 AVIAT OCUTBRE_.png',
-      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 11 AVIAT MAYO.png',
-      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 14 AVIAT NOVIEMBRE_.png',
-      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 2 AVIAT DICIEMBRE_.png',
-      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 CARRUSEL 3 AVIAT MAYO.png',
-      '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 FEBRERO AVIAT.png'
-    ],
-    links: [
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/company/aviatrd/' },
-      { label: 'Instagram', url: 'https://www.instagram.com/aviat_rd?igsh=c253a3N6cHk1cjBy' }
+      { label: 'Instagram', url: 'https://www.instagram.com/aie.constructora?igsh=MXFqZnk3dnJubDk4MQ==' }
     ]
   },
   {
@@ -192,195 +149,247 @@ const professionalBrands = [
   }
 ];
 
-// ── Individual Brand Carousel Card ───────────────────────────────────────────
-function BrandCarouselCard({ brand, onSelectProject, index }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const timerRef = useRef(null);
+const TOOL_LOGOS = {
+  ps: '/images/photoshop.png',
+  ai: '/images/illustrator.png',
+  pr: '/images/premiere.png',
+  cv: '/images/canva.png',
+  id: '/images/indesign.png'
+};
 
-  // Autoplay
+// ── Image Gallery for Projects ──────────────────────────────────────────────
+function ProjectsImageGallery({ project, onSelectProject }) {
+  const [slideIdx, setSlideIdx] = useState(0);
+
   useEffect(() => {
-    if (isHovered) return;
-    timerRef.current = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % brand.images.length);
-    }, 3500);
-    return () => clearInterval(timerRef.current);
-  }, [isHovered, brand.images.length]);
+    setSlideIdx(0);
+  }, [project.id]);
 
-  const prev = (e) => {
+  const prevSlide = (e) => {
     e.stopPropagation();
-    setCurrentSlide(prev => (prev - 1 + brand.images.length) % brand.images.length);
+    setSlideIdx(i => (i - 1 + project.images.length) % project.images.length);
   };
-  const next = (e) => {
+  const nextSlide = (e) => {
     e.stopPropagation();
-    setCurrentSlide(prev => (prev + 1) % brand.images.length);
+    setSlideIdx(i => (i + 1) % project.images.length);
   };
-
-  // Alternate layout: odd cards = image left, even = image right
-  const isReversed = index % 2 !== 0;
 
   return (
-    <div className={`brand-card reveal ${isReversed ? 'brand-card--reversed' : ''}`}>
-      {/* Left / Right: Image Carousel */}
-      <div
-        className="brand-card__carousel"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* Slides */}
-        <div className="brand-card__slides" onClick={() => onSelectProject(brand)}>
-          {brand.images.map((img, idx) => (
-            <div
-              key={idx}
-              className={`brand-card__slide ${idx === currentSlide ? 'active' : ''}`}
-            >
-              <img src={img} alt={`${brand.title} – imagen ${idx + 1}`} />
-              <div className="brand-card__zoom-hint">
-                <Eye size={20} />
-                <span>Ver galería completa</span>
-              </div>
-            </div>
-          ))}
+    <div className="projects-gallery-inner" onClick={() => onSelectProject(project)}>
+      <img
+        src={project.images[slideIdx]}
+        alt={`${project.title} – imagen ${slideIdx + 1}`}
+        className="projects-gallery-img"
+        loading="lazy"
+      />
+
+      <div className="projects-gallery-hint">
+        <div className="projects-gallery-hint__icon">
+          <Eye size={22} />
         </div>
-
-        {/* Arrows */}
-        <button className="brand-card__arrow brand-card__arrow--prev" onClick={prev} aria-label="Anterior">
-          <ChevronLeft size={22} />
-        </button>
-        <button className="brand-card__arrow brand-card__arrow--next" onClick={next} aria-label="Siguiente">
-          <ChevronRight size={22} />
-        </button>
-
-        {/* Dots */}
-        <div className="brand-card__dots">
-          {brand.images.map((_, idx) => (
-            <button
-              key={idx}
-              className={`brand-card__dot ${idx === currentSlide ? 'active' : ''}`}
-              onClick={(e) => { e.stopPropagation(); setCurrentSlide(idx); }}
-              aria-label={`Imagen ${idx + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Counter */}
-        <div className="brand-card__counter">{currentSlide + 1} / {brand.images.length}</div>
+        <span>Ver galería completa</span>
       </div>
 
-      {/* Info Panel */}
-      <div className="brand-card__info">
-        <span className="brand-card__category">Social Media</span>
-        <h3 className="brand-card__title">{brand.title}</h3>
-        <p className="brand-card__subtitle">{brand.subtitle}</p>
-        <p className="brand-card__description">{brand.description}</p>
+      {project.images.length > 1 && (
+        <>
+          <button className="projects-gallery-arrow projects-gallery-arrow--prev" onClick={prevSlide} aria-label="Anterior">
+            <ChevronLeft size={16} />
+          </button>
+          <button className="projects-gallery-arrow projects-gallery-arrow--next" onClick={nextSlide} aria-label="Siguiente">
+            <ChevronRight size={16} />
+          </button>
 
-        {brand.tools && brand.tools.length > 0 && (
-          <div className="brand-card__tools" style={{ marginTop: '0.5rem', marginBottom: '0.2rem' }}>
-            <span className="tools-label">Herramientas:</span>
-            <div className="tools-list">
-              {brand.tools.map((t, idx) => {
-                const lowT = t.toLowerCase();
-                const toolLogos = {
-                  ps: '/images/photoshop.png',
-                  ai: '/images/illustrator.png',
-                  pr: '/images/premiere.png',
-                  cv: '/images/canva.png',
-                  id: '/images/indesign.png'
-                };
-                const hasLogo = !!toolLogos[lowT];
-                return (
-                  <div 
-                    key={idx} 
-                    className={`tool-badge badge-${lowT}`} 
-                    title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : t}
-                    style={{ 
-                      background: hasLogo ? 'transparent' : undefined,
-                      boxShadow: hasLogo ? 'none' : undefined,
-                      padding: 0
-                    }}
-                  >
-                    {hasLogo ? (
-                      <img 
-                        src={toolLogos[lowT]} 
-                        alt={t} 
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} 
-                      />
-                    ) : (
-                      t
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+          {/* Thumbnail strip inside gallery */}
+          <div className="projects-thumb-strip">
+            {project.images.map((img, i) => (
+              <button
+                key={i}
+                className={`projects-thumb ${i === slideIdx ? 'active' : ''}`}
+                onClick={(e) => { e.stopPropagation(); setSlideIdx(i); }}
+              >
+                <img src={img} alt={`thumb ${i + 1}`} />
+              </button>
+            ))}
           </div>
-        )}
-
-        {brand.links && brand.links.length > 0 && (
-          <div className="brand-card__tools" style={{ marginTop: '0.6rem' }}>
-            <span className="tools-label">Enlaces:</span>
-            <div className="tools-list">
-              {brand.links.map((link, idx) => (
-                <a
-                  key={idx}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="brand-link-btn"
-                >
-                  {link.label === 'LinkedIn' ? (
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '3px' }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                  ) : (
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '3px' }}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                  )}
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <button
-          className="brand-card__view-btn"
-          onClick={() => onSelectProject(brand)}
-        >
-          <Eye size={16} />
-          Ver galería completa
-        </button>
-      </div>
+        </>
+      )}
     </div>
   );
 }
 
-// ── Main Projects Component ───────────────────────────────────────────────────
+// ── Main Projects Component ──────────────────────────────────────────────────
 export default function Projects({ onSelectProject }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const autoPlayRef = useRef(null);
+
+  const goTo = (idx) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex(idx);
+      setIsTransitioning(false);
+    }, 200);
+  };
+
+  useEffect(() => {
+    autoPlayRef.current = setInterval(() => {
+      setCurrentIndex(i => (i + 1) % professionalBrands.length);
+    }, 6000);
+    return () => clearInterval(autoPlayRef.current);
+  }, []);
+
+  const stopAutoPlay = () => clearInterval(autoPlayRef.current);
+  const prev = () => { stopAutoPlay(); goTo((currentIndex - 1 + professionalBrands.length) % professionalBrands.length); };
+  const next = () => { stopAutoPlay(); goTo((currentIndex + 1) % professionalBrands.length); };
+
+  const currentProject = professionalBrands[currentIndex] || professionalBrands[0];
+  const progress = ((currentIndex + 1) / professionalBrands.length) * 100;
+
   return (
     <section id="proyectos" className="projects-section">
       <div className="container">
-        <div className="professional-brands-view">
-
-          {/* Section intro */}
-          <div className="section-header reveal">
+        
+        {/* Section Intro */}
+        <div className="projects-header reveal">
+          <div className="projects-header__left">
             <span className="section-subtitle">Portafolio</span>
             <h2 className="section-title">Social <span className="title-gradient">Media</span></h2>
-            <p className="section-description">
+            <p className="projects-header__desc">
               Creación de contenido digital estratégico y a medida. Una selección de marcas que han
               confiado en mi visión gráfica para gestionar su presencia en redes sociales.
             </p>
           </div>
+        </div>
 
-          {/* One card per brand */}
-          <div className="brands-list">
-            {professionalBrands.map((brand, index) => (
-              <BrandCarouselCard
-                key={brand.id}
-                brand={brand}
-                index={index}
-                onSelectProject={onSelectProject}
+        {/* Unified Carousel Container */}
+        <div className="projects-carousel-container reveal">
+          
+          {/* Progress bar */}
+          <div className="projects-progress-bar">
+            <div className="projects-progress-fill" style={{ width: `${progress}%` }} />
+          </div>
+
+          <div className={`projects-carousel-card ${isTransitioning ? 'pj-fade-out' : 'pj-fade-in'}`}>
+            
+            {/* LEFT: Image Gallery */}
+            <div className="projects-carousel-image-wrap">
+              <ProjectsImageGallery 
+                project={currentProject} 
+                onSelectProject={onSelectProject} 
               />
-            ))}
+            </div>
+
+            {/* RIGHT: Project Info */}
+            <div className="projects-carousel-info">
+              
+              {/* Counter */}
+              <div className="projects-counter">
+                <span className="projects-counter__current">{String(currentIndex + 1).padStart(2, '0')}</span>
+                <span className="projects-counter__sep">/</span>
+                <span className="projects-counter__total">{String(professionalBrands.length).padStart(2, '0')}</span>
+              </div>
+
+              {/* Category tag */}
+              <div className="projects-category-badge">
+                <InstagramIcon size={12} style={{ color: '#2b5cff' }} />
+                <span>Social Media</span>
+              </div>
+
+              <h3 className="projects-carousel-title">{currentProject.title}</h3>
+              <p className="projects-carousel-subtitle">{currentProject.subtitle}</p>
+              <p className="projects-carousel-desc">{currentProject.description}</p>
+
+              {/* Tools */}
+              {currentProject.tools?.length > 0 && (
+                <div className="brand-card__tools">
+                  <span className="tools-label">Herramientas:</span>
+                  <div className="tools-list">
+                    {currentProject.tools.map((t, idx) => {
+                      const logo = TOOL_LOGOS[t.toLowerCase()];
+                      return (
+                        <div
+                          key={idx}
+                          className={`tool-badge badge-${t.toLowerCase()}`}
+                          title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : t}
+                          style={{ background: logo ? 'transparent' : undefined, boxShadow: logo ? 'none' : undefined, padding: 0 }}
+                        >
+                          {logo ? <img src={logo} alt={t} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} /> : t}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Links */}
+              {currentProject.links?.length > 0 && (
+                <div className="brand-card__tools" style={{ marginTop: '0.4rem' }}>
+                  <span className="tools-label">Enlaces:</span>
+                  <div className="tools-list">
+                    {currentProject.links.map((link, idx) => (
+                      <a
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="brand-link-btn"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: '#1e42d9' }}
+                      >
+                        <InstagramIcon size={13} />
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <button className="projects-carousel-view-btn" onClick={() => onSelectProject(currentProject)}>
+                <Eye size={16} />
+                Ver proyecto completo
+              </button>
+
+              {/* Mini Brand Nav thumbnails */}
+              {professionalBrands.length > 1 && (
+                <div className="projects-mini-nav">
+                  {professionalBrands.map((p, idx) => (
+                    <button
+                      key={p.id}
+                      className={`projects-mini-thumb ${idx === currentIndex ? 'active' : ''}`}
+                      onClick={() => { stopAutoPlay(); goTo(idx); }}
+                      title={p.title}
+                    >
+                      <img src={p.images[0]} alt={p.title} />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+          </div>
+
+          {/* Navigation controls */}
+          <div className="projects-carousel-controls">
+            <button className="projects-carousel-arrow" onClick={prev} aria-label="Anterior">
+              <ChevronLeft size={24} />
+            </button>
+            <div className="projects-carousel-dots">
+              {professionalBrands.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`projects-carousel-dot ${idx === currentIndex ? 'active' : ''}`}
+                  onClick={() => { stopAutoPlay(); goTo(idx); }}
+                  aria-label={`Proyecto ${idx + 1}`}
+                />
+              ))}
+            </div>
+            <button className="projects-carousel-arrow" onClick={next} aria-label="Siguiente">
+              <ChevronRight size={24} />
+            </button>
           </div>
 
         </div>
+
       </div>
     </section>
   );
