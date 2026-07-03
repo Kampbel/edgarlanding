@@ -717,33 +717,21 @@ body {
   border: 2px solid rgba(43, 92, 255, 0.25);
 }
 
-/* Personal brand monogram initials */
-.hero-visual__initials-wrap {
+/* Personal brand logo container in the center of orbits */
+.hero-visual__logo-wrap {
   background: linear-gradient(135deg, #090d16 0%, #12192c 100%);
   border: 2px solid rgba(43, 92, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1.5rem;
 }
 
-.hero-visual__initials {
+.hero-visual__logo {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, rgba(43, 92, 255, 0.25) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.hero-visual__initials-text {
-  font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 25px rgba(43, 92, 255, 0.7);
-  user-select: none;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(43, 92, 255, 0.45));
 }
 
 /* Floating tool badges on orbit */

@@ -159,12 +159,14 @@ export default function Hero() {
           <div className="hero-visual__ring hero-visual__ring--mid" />
           <div className="hero-visual__ring hero-visual__ring--inner" />
 
-          {/* Monograma de Marca Personal (Iniciales ES) */}
-          <div className="hero-visual__photo-wrap hero-visual__initials-wrap">
+          {/* Logo de Marca Personal */}
+          <div className="hero-visual__photo-wrap hero-visual__logo-wrap">
             <div className="hero-visual__photo-glow" />
-            <div className="hero-visual__initials">
-              <span className="hero-visual__initials-text">ES</span>
-            </div>
+            <img
+              src="/images/logo.png"
+              alt="Edgar Santos Logo"
+              className="hero-visual__logo"
+            />
           </div>
 
           {/* Floating tool badges around the orbit */}
