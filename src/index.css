@@ -455,15 +455,15 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  /* Taller fade with a smooth multi-stop easing to blend hero into About's sand beige */
-  height: 55%;
+  /* Deep blue/navy stage extending down, transition via electric blue glow into sand beige */
+  height: 60%;
   background: linear-gradient(
     to top,
-    #f4efe6 0%,
-    rgba(244, 239, 230, 0.92) 8%,
-    rgba(244, 239, 230, 0.70) 18%,
-    rgba(244, 239, 230, 0.40) 32%,
-    rgba(244, 239, 230, 0.15) 50%,
+    var(--bg-secondary) 0%,
+    rgba(244, 239, 230, 0.95) 4%,
+    rgba(30, 66, 217, 0.25) 15%,
+    rgba(10, 14, 30, 0.85) 35%,
+    rgba(10, 14, 30, 0.98) 55%,
     transparent 100%
   );
   z-index: 3;
@@ -717,6 +717,35 @@ body {
   border: 2px solid rgba(43, 92, 255, 0.25);
 }
 
+/* Personal brand monogram initials */
+.hero-visual__initials-wrap {
+  background: linear-gradient(135deg, #090d16 0%, #12192c 100%);
+  border: 2px solid rgba(43, 92, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual__initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(43, 92, 255, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-visual__initials-text {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 25px rgba(43, 92, 255, 0.7);
+  user-select: none;
+}
+
 /* Floating tool badges on orbit */
 .hero-tool-badge {
   position: absolute;
@@ -854,11 +883,12 @@ body {
 }
 
 .hero-title__accent {
-  /* Electric blue gradient text */
-  background: linear-gradient(120deg, #769bff 0%, #2b5cff 45%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Solid electric blue text to stand out boldly without gradient */
+  color: #2b5cff;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
 }
 
 .hero-title__thin {
@@ -1545,18 +1575,7 @@ body {
   overflow: hidden;
 }
 
-/* Wave top edge — blends from About's sand beige */
-.projects-section::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath d='M0 0 C240 70 480 0 720 35 C960 70 1200 20 1440 50 L1440 0 Z' fill='%23f4efe6'/%3E%3C/svg%3E") no-repeat top / 100% 100%;
-  z-index: 2;
-  pointer-events: none;
-}
+
 
 /* View Toggle Tabs */
 .projects-view-toggle {
@@ -3784,26 +3803,4 @@ a.contact-detail-value:hover {
   }
 }
 
-/* Organic section transition curves */
-.section-curve {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  z-index: 5;
-  pointer-events: none;
-}
 
-.section-curve--top {
-  top: 0;
-}
-
-.section-curve--bottom {
-  bottom: 0;
-}
-
-.section-curve svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}

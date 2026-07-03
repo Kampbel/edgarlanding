@@ -222,20 +222,6 @@ export default function Academic({ onSelectProject }) {
 
   return (
     <section id="academico" className="academic-section">
-      {/* Top wave */}
-      <div className="section-curve section-curve--top">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 C360 80 1080 0 1440 60 L1440 0 Z" fill="#f0ede8"/>
-        </svg>
-      </div>
-
-      {/* Bottom wave */}
-      <div className="section-curve section-curve--bottom">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 80 C360 0 1080 80 1440 20 L1440 80 Z" fill="#f4efe6"/>
-        </svg>
-      </div>
-
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* ── Section header ── */}
