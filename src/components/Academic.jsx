@@ -251,20 +251,6 @@ export default function Academic({ onSelectProject }) {
             </p>
           </div>
 
-          {/* Stats chips */}
-          <div className="academic-stats-row">
-            {Object.entries(CATEGORY_META).map(([key, meta]) => {
-              const count = academicProjects.filter(p => p.category === key).length;
-              const Icon = meta.Icon;
-              return (
-                <div key={key} className="academic-stat-chip" style={{ '--chip-color': meta.color }}>
-                  <Icon size={14} />
-                  <span>{count} {meta.label}</span>
-                </div>
-              );
-            })}
-          </div>
-
           {/* Filter bar */}
           <div className="academic-filters">
             {FILTERS.map(f => (
