@@ -98,8 +98,8 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 2 AIE MARZO_.png',
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 3  CARRUSEL 1 AIE MARZO_.png',
       '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 3 CARRSUEL 2 AIE MARZO_.png',
-      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 4 AIE MARZO_.png',
-      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 5 AIE MARZO_.png'
+      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 7 CARRSUEL 1 AIE MARZO_.png',
+      '/images/TRABAJOS PROFESIONAL/AIE CONSTRUTORA/POST 9 CARRSUEL 1 AIE MARZO_.png'
     ],
     links: [
       { label: 'Instagram', url: 'https://www.instagram.com/aie.constructora?igsh=MXFqZnk3dnJubDk4MQ==' }
