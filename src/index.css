@@ -3355,23 +3355,42 @@ a.contact-detail-value:hover {
 
 .academic-header {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 2rem;
   margin-bottom: 4rem;
-  flex-wrap: wrap;
 }
 .academic-header__left .section-subtitle { color: rgba(118, 155, 255, 0.85); }
 .academic-header__left .section-title    { color: #f0ede8; }
 .academic-header__desc {
   margin-top: 1rem;
-  max-width: 480px;
+  max-width: 540px;
   font-size: 0.95rem;
   line-height: 1.75;
   color: rgba(240, 237, 232, 0.55);
 }
 
-.academic-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; align-self: center; }
+/* Category stats row */
+.academic-stats-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.academic-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(var(--chip-color, 118, 155, 255), 0.3);
+  color: var(--chip-color, rgba(118,155,255,0.9));
+  background: rgba(0,0,0,0.2);
+}
+
+.academic-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; }
 .academic-filter-btn {
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
@@ -3388,25 +3407,43 @@ a.contact-detail-value:hover {
 .academic-filter-btn:hover  { border-color: rgba(43,92,255,.45); color: rgba(240,237,232,.9); background: rgba(43,92,255,.1); }
 .academic-filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-/* Carousel layout for Academic Projects */
+/* Progress bar */
+.academic-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(240, 237, 232, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.academic-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #1e42d9, #2b5cff, #769bff);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Carousel container */
 .academic-carousel-container {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   width: 100%;
-  margin-top: 1rem;
 }
+
+/* Fade transitions */
+.ac-fade-out { opacity: 0; transform: translateY(8px); transition: opacity 0.2s ease, transform 0.2s ease; }
+.ac-fade-in  { opacity: 1; transform: translateY(0);   transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s; }
 
 .academic-carousel-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #111620;
-  border: 1px solid rgba(240, 237, 232, 0.05);
-  border-radius: 16px;
+  grid-template-columns: 55% 1fr;
+  background: rgba(17, 22, 32, 0.95);
+  border: 1px solid rgba(240, 237, 232, 0.06);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  min-height: 480px;
-  transition: all var(--transition-normal);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.03);
+  min-height: 500px;
 }
 
 .academic-carousel-image-wrap {
@@ -3505,13 +3542,65 @@ a.contact-detail-value:hover {
 }
 
 .academic-carousel-info {
-  padding: 3rem;
+  padding: 2.75rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
+  overflow-y: auto;
 }
 
+/* Project counter */
+.academic-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.academic-counter__current {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2b5cff;
+  line-height: 1;
+}
+.academic-counter__sep {
+  font-size: 1rem;
+  color: rgba(240,237,232,0.2);
+  font-weight: 300;
+}
+.academic-counter__total {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(240,237,232,0.25);
+}
+
+/* Category badge */
+.academic-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--badge-clr, #769bff);
+  border: 1px solid rgba(from var(--badge-clr) r g b / 0.3);
+  background: rgba(0,0,0,0.25);
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.academic-year-tag {
+  margin-left: 0.3rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(240,237,232,0.2);
+  color: rgba(240,237,232,0.4);
+  font-size: 0.68rem;
+}
+
+/* Old badge – keep for backwards compat */
 .academic-carousel-badge {
   font-size: 0.7rem;
   font-weight: 700;
@@ -3520,6 +3609,65 @@ a.contact-detail-value:hover {
   color: rgba(118, 155, 255, 0.9);
   width: fit-content;
 }
+
+/* Thumbnail strip (inside image gallery) */
+.academic-thumb-strip {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+  z-index: 4;
+  padding: 0.35rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+}
+
+.academic-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  background: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+.academic-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.academic-thumb.active { border-color: #2b5cff; transform: scale(1.1); }
+.academic-thumb:hover  { border-color: rgba(43,92,255,0.6); }
+
+/* Mini nav thumbnails on info panel */
+.academic-mini-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(240,237,232,0.08);
+  padding-top: 1rem;
+}
+
+.academic-mini-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  background: none;
+  padding: 0;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.academic-mini-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.academic-mini-thumb.active { border-color: #2b5cff; opacity: 1; transform: scale(1.05); }
+.academic-mini-thumb:hover  { opacity: 0.9; border-color: rgba(43,92,255,0.5); }
+
 
 .academic-carousel-title {
   font-family: var(--font-heading);
