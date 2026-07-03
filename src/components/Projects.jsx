@@ -26,11 +26,11 @@ const professionalBrands = [
   },
   {
     id: 'cocovet',
-    title: 'Coco Vet Clínica',
-    subtitle: 'Clínica Veterinaria & Farmacia',
+    title: 'Coco vet',
+    subtitle: 'Diseño de identidad visual para redes sociales enfocado en transmitir confianza y profesionalismo.',
     category: 'social-media',
     type: 'profesional',
-    description: 'Desarrollo de línea gráfica para redes sociales y diseño de empaques para sus productos veterinarios exclusivos. Se utilizó una paleta fresca y alegre para transmitir confianza y cercanía a los dueños de mascotas, logrando posts altamente informativos y visualmente memorables.',
+    description: 'Para Coco Vet, desarrollé una línea gráfica amigable y cercana, creando desde post emotivos que resaltan el cuidado animal, hasta material promocional para su tienda. El uso de colores corporativos, elementos orgánicos y sets de iconos personalizados ayudó a construir una marca que conecta genuinamente con los dueños de mascotas.',
     tools: ['Ps', 'Ai'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 190609.png',
     images: [
@@ -47,7 +47,7 @@ const professionalBrands = [
   },
   {
     id: 'cgr',
-    title: 'Club de Gestión de Riesgo RD',
+    title: 'Club de Gestión de Riesgos',
     subtitle: 'Fomentar las mejores prácticas y la cultura en gestión de riesgos financieros y regulaciones',
     category: 'social-media',
     type: 'profesional',
@@ -70,10 +70,10 @@ const professionalBrands = [
   {
     id: 'transekur',
     title: 'Transekur',
-    subtitle: 'Servicios de Transporte Premium',
+    subtitle: 'Transportation Services',
     category: 'social-media',
     type: 'profesional',
-    description: 'Diseño de contenido strategic para redes sociales enfocado en el sector corporativo y turístico VIP. Se proyectó una estética sobria y exclusiva, utilizando fotografía de alta gama combinada con layouts tipográficos minimalistas y elegantes.',
+    description: 'Desarrollo de contenido digital enfocado en el sector de transporte de lujo y turismo corporativo. Para Transekur, creé una línea gráfica premium, utilizando composiciones elegantes e imágenes de alta calidad para comunicar exclusividad y confort. El diseño se centró en atraer a un público internacional, destacando experiencias de viaje VIP, traslados privados y destinos clave del país mediante un estilo visual moderno y sofisticado.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192542.png',
     images: [
@@ -90,11 +90,11 @@ const professionalBrands = [
   },
   {
     id: 'aie',
-    title: 'Constructora AIE',
-    subtitle: 'Ingeniería & Desarrollo Inmobiliario',
+    title: 'AIE Constructora',
+    subtitle: 'Construimos proyectos con criterio, estructura y visión. Ingeniería que se ve. Procesos que sostienen.',
     category: 'social-media',
     type: 'profesional',
-    description: 'Piezas gráficas para canales digitales, incluyendo posts corporativos y carruseles informativos de proyectos inmobiliarios en desarrollo. Se diseñaron esquemas limpios e industriales para reflejar solidez, precisión y excelencia arquitectónica.',
+    description: 'Desarrollo de identidad visual para el sector construcción e ingeniería. Para AIE Constructora, el reto fue proyectar solidez, precisión y confianza. Diseñé una línea gráfica robusta que combina fotografías reales de los procesos en obra con tipografías fuertes y elementos extraídos de su propio logotipo. El resultado es un contenido que no solo destaca la capacidad técnica y estructural, sino también la calidad humana detrás de cada proyecto.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192604.png',
     images: [
@@ -112,10 +112,10 @@ const professionalBrands = [
   {
     id: 'aviat',
     title: 'Aviat',
-    subtitle: 'Servicios Aeronáuticos y VIP',
+    subtitle: 'Empresa de transporte y flete',
     category: 'social-media',
     type: 'profesional',
-    description: 'Desarrollo de contenido visual y línea gráfica corporativa para sus redes de LinkedIn e Instagram. Se diseñaron publicaciones limpias y corporativas destinadas a promover sus servicios de transporte aéreo, consultoría aeronáutica y atención VIP.',
+    description: 'Desarrollo de identidad visual y contenido digital para el sector logístico y de transporte de carga. Para Aviat, diseñé una línea gráfica dinámica y corporativa que transmite eficiencia, seguridad y alcance global. El trabajo abordó desde la creación de composiciones visuales para sus servicios (marítimo, aéreo y terrestre), hasta el diseño de iconografía personalizada, logrando una presencia digital sólida y confiable para sus clientes comerciales.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192631.png',
     images: [
@@ -153,11 +153,11 @@ const professionalBrands = [
   },
   {
     id: 'birria',
-    title: "Birria & Ma' Na'",
-    subtitle: 'Marca Gastronómica',
+    title: 'Birria y Ma’ Na’',
+    subtitle: 'Cocina fantasma',
     category: 'social-media',
     type: 'profesional',
-    description: 'Dirección de arte y diseño de contenidos gastronómicos para Instagram. Se diseñó una paleta de colores cálidos y texturas rústicas que realzan el estilo culinario (food-styling), logrando publicaciones altamente atractivas que despiertan el apetito.',
+    description: 'Creación de línea gráfica dinámica para una cocina fantasma. Al operar principalmente a través de delivery, el reto fue hacer que la comida hablara por sí sola a través de las pantallas. Desarrollé una identidad vibrante que combina colores cálidos, frases pegajosas y fotografías de alto impacto para estimular el apetito e incentivar los pedidos digitales, logrando una presencia irresistible en redes.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192746.png',
     images: [
@@ -174,11 +174,11 @@ const professionalBrands = [
   },
   {
     id: 'pimma',
-    title: 'Pimma Autos',
-    subtitle: 'Concesionario & Venta de Vehículos',
+    title: 'Pimma Auto',
+    subtitle: 'Venta de autos',
     category: 'social-media',
     type: 'profesional',
-    description: 'Estrategia de contenido visual para la exhibición y venta de vehículos nuevos y usados. Creación de layouts promocionales de ofertas de temporada y banners informativos que destacan los beneficios y comodidades de sus modelos destacados.',
+    description: 'Diseño de contenido digital enfocado en el sector automotriz y la venta de vehículos. Para Pimma Auto, el objetivo fue crear un catálogo visual atractivo y confiable. Desarrollé plantillas dinámicas que resaltan las características, detalles interiores y precios de cada modelo mediante recortes fotográficos y composiciones limpias.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192815.png',
     images: [
