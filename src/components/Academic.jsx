@@ -207,19 +207,20 @@ export default function Academic({ onSelectProject }) {
 
   return (
     <section id="academico" className="academic-section">
-      {/* Top transition curve from Projects (var(--bg-primary)) to Academic (#0d1117) */}
+      {/* Top wave — blends from Projects' bottom beige (#f0ede8) into Academic dark */}
       <div className="section-curve section-curve--top">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 H 1440 V 80 Q 720 0 0 80 Z" fill="var(--bg-primary)"/>
+          <path d="M0 0 C360 80 1080 0 1440 60 L1440 0 Z" fill="#f0ede8"/>
         </svg>
       </div>
 
-      {/* Bottom transition curve from Academic (#0d1117) to Contact (var(--bg-secondary)) */}
+      {/* Bottom wave — blends Academic dark into Contact sand beige (#f4efe6) */}
       <div className="section-curve section-curve--bottom">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 80 H 1440 V 0 Q 720 80 0 0 Z" fill="var(--bg-secondary)"/>
+          <path d="M0 80 C360 0 1080 80 1440 20 L1440 80 Z" fill="#f4efe6"/>
         </svg>
       </div>
+
 
       <div className="container">
 
