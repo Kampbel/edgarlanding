@@ -260,15 +260,42 @@ export default function Academic({ onSelectProject }) {
               <p className="academic-carousel-subtitle">{currentProject.subtitle}</p>
               <p className="academic-carousel-desc">{currentProject.description}</p>
               
-              {currentProject.tools && currentProject.tools.length > 0 && (
+               {currentProject.tools && currentProject.tools.length > 0 && (
                 <div className="brand-card__tools" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
                   <span className="tools-label">Herramientas:</span>
                   <div className="tools-list">
-                    {currentProject.tools.map((t, idx) => (
-                      <div key={idx} className={`tool-badge badge-${t.toLowerCase()}`} title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : 'Adobe InDesign'}>
-                        {t}
-                      </div>
-                    ))}
+                    {currentProject.tools.map((t, idx) => {
+                      const lowT = t.toLowerCase();
+                      const toolLogos = {
+                        ps: '/images/photoshop.png',
+                        ai: '/images/illustrator.png',
+                        pr: '/images/premiere.png',
+                        cv: '/images/canva.png'
+                      };
+                      const hasLogo = !!toolLogos[lowT];
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`tool-badge badge-${lowT}`} 
+                          title={t === 'Ps' ? 'Adobe Photoshop' : t === 'Ai' ? 'Adobe Illustrator' : t === 'Id' ? 'Adobe InDesign' : t}
+                          style={{ 
+                            background: hasLogo ? 'transparent' : undefined,
+                            boxShadow: hasLogo ? 'none' : undefined,
+                            padding: 0
+                          }}
+                        >
+                          {hasLogo ? (
+                            <img 
+                              src={toolLogos[lowT]} 
+                              alt={t} 
+                              style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} 
+                            />
+                          ) : (
+                            t
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

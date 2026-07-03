@@ -1104,7 +1104,7 @@ body {
   font-weight: 900;
   letter-spacing: -0.03em;
   color: #ffffff;
-  background: var(--accent) !important;
+  background: var(--accent);
   box-shadow: 0 3px 8px -2px rgba(30, 66, 217, 0.3);
   transition: box-shadow 0.2s ease;
 }
@@ -2542,9 +2542,9 @@ a.contact-detail-value:hover {
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: #ffffff !important;
-  background: var(--accent) !important;
-  border: none !important;
+  color: #ffffff;
+  background: var(--accent);
+  border: none;
   box-shadow: 0 3px 8px -2px rgba(30, 66, 217, 0.3);
   cursor: default;
   transition: all 0.2s ease;

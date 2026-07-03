@@ -11,12 +11,14 @@ const softwareTools = [
     shortName: 'Photoshop',
     abbr: 'Ps',
     color: '#31A8FF',
+    logo: '/images/photoshop.png',
   },
   {
     name: 'Adobe Illustrator',
     shortName: 'Illustrator',
     abbr: 'Ai',
     color: '#FF9A00',
+    logo: '/images/illustrator.png',
   },
   {
     name: 'Adobe InDesign',
@@ -29,12 +31,14 @@ const softwareTools = [
     shortName: 'Premiere',
     abbr: 'Pr',
     color: '#9999FF',
+    logo: '/images/premiere.png',
   },
   {
     name: 'Canva',
     shortName: 'Canva',
     abbr: 'Cv',
     color: '#00C4CC',
+    logo: '/images/canva.png',
   },
 ];
 
@@ -136,9 +140,20 @@ export default function About() {
                   <div key={tool.abbr} className="software-badge" title={tool.name}>
                     <div
                       className="software-badge__icon"
-                      style={{ background: tool.color }}
+                      style={{ 
+                        background: tool.logo ? 'transparent' : tool.color,
+                        boxShadow: tool.logo ? 'none' : undefined
+                      }}
                     >
-                      <span>{tool.abbr}</span>
+                      {tool.logo ? (
+                        <img 
+                          src={tool.logo} 
+                          alt={tool.name} 
+                          style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'inherit' }} 
+                        />
+                      ) : (
+                        <span>{tool.abbr}</span>
+                      )}
                     </div>
                     <span className="software-badge__name">{tool.shortName || tool.abbr}</span>
                   </div>
