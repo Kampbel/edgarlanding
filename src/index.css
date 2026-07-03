@@ -3366,3 +3366,20 @@ a.contact-detail-value:hover {
     font-size: 1.75rem;
   }
 }
+
+/* Behance divider */
+.behance-divider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.behance-divider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

@@ -59,11 +59,21 @@ function App() {
         {/* Hero Section */}
         <Hero />
 
+        {/* Divider Hero - Main */}
+        <div className="behance-divider">
+          <img src="/images/ANIMACION_BEHANCE_1.gif" alt="Divisor Behance" />
+        </div>
+
         {/* About Me Section */}
         <About />
 
         {/* Social Media Projects Section */}
         <Projects onSelectProject={handleSelectProject} />
+
+        {/* Divider Projects - Academic */}
+        <div className="behance-divider">
+          <img src="/images/ANIMACION_BEHANCE_1.gif" alt="Divisor Behance" />
+        </div>
 
         {/* Academic Projects Section */}
         <Academic onSelectProject={handleSelectProject} />
