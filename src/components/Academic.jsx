@@ -308,7 +308,6 @@ export default function Academic({ onSelectProject }) {
               <div className="academic-category-badge" style={{ '--badge-clr': catMeta.color || '#769bff' }}>
                 {CatIcon && <CatIcon size={12} />}
                 <span>{catMeta.label || project.category}</span>
-                {project.year && <span className="academic-year-tag">{project.year}</span>}
               </div>
 
               <h3 className="academic-carousel-title">{project.title}</h3>

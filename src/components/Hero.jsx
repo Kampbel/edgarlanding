@@ -115,11 +115,6 @@ export default function Hero() {
         {/* LEFT: text content */}
         <div ref={contentRef} className="hero-content">
 
-          {/* Availability badge */}
-          <div className="hero-badge animate-fade-in-up-delay-1">
-            <span className="hero-badge__dot" />
-            Disponible para proyectos
-          </div>
 
           <h1 className="hero-title animate-fade-in-up-delay-1">
             EDGAR<br />
