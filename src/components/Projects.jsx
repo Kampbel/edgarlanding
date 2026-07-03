@@ -48,10 +48,10 @@ const professionalBrands = [
   {
     id: 'cgr',
     title: 'Club de Gestión de Riesgo RD',
-    subtitle: 'Asociación Profesional Corporativa',
+    subtitle: 'Fomentar las mejores prácticas y la cultura en gestión de riesgos financieros y regulaciones',
     category: 'social-media',
     type: 'profesional',
-    description: 'Línea gráfica corporativa para la gestión de su comunidad en LinkedIn e Instagram. Creación de plantillas editoriales para la difusión de eventos, webinars y reportes técnicos sobre análisis y prevención de riesgos empresariales.',
+    description: 'Diseño de comunicación visual corporativa e institucional. Para el Club de Gestión de Riesgos, el objetivo fue proyectar una imagen sobria y de alto nivel. Me encargué de estructurar gráficamente la promoción de webinars, paneles de expertos y jornadas anuales, logrando diseños limpios que facilitan la lectura de información detallada y mantienen el prestigio y la seriedad de la organización.',
     tools: ['Ps'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 190737.png',
     images: [
@@ -61,6 +61,10 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/CLUB DE GESTION DE RIESGO/CGR PANELISTA.png',
       '/images/TRABAJOS PROFESIONAL/CLUB DE GESTION DE RIESGO/POST SEPTIMBRE CGR RD.png',
       '/images/TRABAJOS PROFESIONAL/CLUB DE GESTION DE RIESGO/arte para Webinar_.png'
+    ],
+    links: [
+      { label: 'Instagram', url: 'https://www.instagram.com/gestionriesgodr' },
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/company/club-de-gesti%C3%B3n-de-riesgos-rd/' }
     ]
   },
   {
@@ -107,7 +111,7 @@ const professionalBrands = [
   },
   {
     id: 'aviat',
-    title: 'Aviation Services Group',
+    title: 'Aviat',
     subtitle: 'Servicios Aeronáuticos y VIP',
     category: 'social-media',
     type: 'profesional',
@@ -121,15 +125,18 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/AVIAT/POST 2 AVIAT DICIEMBRE_.png',
       '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 CARRUSEL 3 AVIAT MAYO.png',
       '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 FEBRERO AVIAT.png'
+    ],
+    links: [
+      { label: 'Sitio Web', url: 'https://aviat.com.do' }
     ]
   },
   {
     id: 'cesfront',
     title: 'CESFRONT',
-    subtitle: 'Seguridad Fronteriza Terrestre',
+    subtitle: 'Cuerpo Especializado de Seguridad Fronteriza Terrestre',
     category: 'social-media',
     type: 'profesional',
-    description: 'Diseño y diagramación de efemérides patrias, institucionales y publicaciones oficiales para redes sociales. Se creó una estética visualmente imponente e institucional que proyecta la identidad del Cuerpo Especializado y el orgullo nacional.',
+    description: 'Desarrollo de comunicación visual institucional y conmemorativa. Para el CESFRONT, el enfoque consistió en proyectar respeto, solemnidad y patriotismo. Me encargué del diseño gráfico de efemérides, hitos históricos y celebraciones institucionales, utilizando una línea visual clásica y formal. El trabajo destaca por la integración cuidadosa de símbolos patrios, tipografías tradicionales e imágenes históricas para honrar la identidad militar y nacional.',
     tools: ['Ps', 'Ai'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192712.png',
     images: [
@@ -139,6 +146,9 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 7.png',
       '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 8.png',
       '/images/TRABAJOS PROFESIONAL/CESFRONT/efemérides 9.png'
+    ],
+    links: [
+      { label: 'Instagram', url: 'https://www.instagram.com/cesfrontrd' }
     ]
   },
   {
