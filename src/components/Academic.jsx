@@ -203,7 +203,7 @@ export default function Academic({ onSelectProject }) {
 
   if (filtered.length === 0) return null;
 
-  const currentProject = filtered[currentIndex];
+  const currentProject = filtered[currentIndex] || filtered[0];
 
   return (
     <section id="academico" className="academic-section">
@@ -228,7 +228,10 @@ export default function Academic({ onSelectProject }) {
               <button
                 key={f}
                 className={`academic-filter-btn ${activeFilter === f ? 'active' : ''}`}
-                onClick={() => setActiveFilter(f)}
+                onClick={() => {
+                  setActiveFilter(f);
+                  setCurrentIndex(0);
+                }}
               >
                 {f === 'todos' ? 'Todos' : f === 'branding' ? 'Branding' : f === 'editorial' ? 'Diseño Editorial' : 'Publicidad'}
               </button>
