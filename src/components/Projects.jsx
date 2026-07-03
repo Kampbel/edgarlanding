@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Eye, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
+import LinkedinIcon from './LinkedinIcon';
 
 const professionalBrands = [
   {
@@ -127,7 +128,8 @@ const professionalBrands = [
       '/images/TRABAJOS PROFESIONAL/AVIAT/POST 5 FEBRERO AVIAT.png'
     ],
     links: [
-      { label: 'Sitio Web', url: 'https://aviat.com.do' }
+      { label: 'Sitio Web', url: 'https://aviat.com.do' },
+      { label: 'Instagram', url: 'https://www.instagram.com/aviat_rd?igsh=c253a3N6cHk1cjBy' }
     ]
   },
   {
@@ -342,7 +344,13 @@ function BrandCard({ brand, onSelectProject, index }) {
                   className="brand-link-btn"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: '#1e42d9' }}
                 >
-                  <InstagramIcon size={13} />
+                  {link.label.toLowerCase().includes('instagram') ? (
+                    <InstagramIcon size={13} />
+                  ) : link.label.toLowerCase().includes('linkedin') ? (
+                    <LinkedinIcon size={13} />
+                  ) : (
+                    <Globe size={13} />
+                  )}
                   {link.label}
                 </a>
               ))}
