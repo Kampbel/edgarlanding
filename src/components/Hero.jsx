@@ -8,7 +8,7 @@ const tools = [
   { name: 'Ca',  logo: '/images/canva.png',        color: '#00C4CC', angle: 288 },
 ];
 
-export default function Hero() {
+export default function Hero({ showContact = true }) {
   const sectionRef   = useRef(null);
   const bgRef        = useRef(null);
   const contentRef   = useRef(null);
@@ -136,9 +136,11 @@ export default function Hero() {
               Explorar Proyectos
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#contacto" className="hero-btn hero-btn--ghost" onClick={e => scrollTo('contacto', e)}>
-              Contacto
-            </a>
+            {showContact && (
+              <a href="#contacto" className="hero-btn hero-btn--ghost" onClick={e => scrollTo('contacto', e)}>
+                Contacto
+              </a>
+            )}
           </div>
 
           {/* Stats row */}
@@ -151,59 +153,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: visual panel */}
-        <div ref={visualRef} className="hero-visual animate-fade-in-right">
-
-          {/* Decorative rings */}
-          <div className="hero-visual__ring hero-visual__ring--outer" />
-          <div className="hero-visual__ring hero-visual__ring--mid" />
-          <div className="hero-visual__ring hero-visual__ring--inner" />
-
-          {/* Logo de Marca Personal */}
-          <div className="hero-visual__photo-wrap hero-visual__logo-wrap">
-            <div className="hero-visual__photo-glow" />
-            <img
-              src="/images/logo.png"
-              alt="Edgar Santos Logo"
-              className="hero-visual__logo"
-            />
-          </div>
-
-          {/* Floating tool badges around the orbit */}
-          {tools.map((t) => {
-            const rad = (t.angle - 90) * (Math.PI / 180);
-            const r   = 52; // orbit radius in %
-            const cx  = 50 + r * Math.cos(rad);
-            const cy  = 50 + r * Math.sin(rad);
-            return (
-              <div
-                key={t.name}
-                className="hero-tool-badge"
-                style={{
-                  left: `${cx}%`,
-                  top:  `${cy}%`,
-                  '--badge-color': t.color,
-                  animationDelay: `${t.angle / 360 * 2}s`,
-                }}
-                title={t.name}
-              >
-                <img src={t.logo} alt={t.name} />
-              </div>
-            );
-          })}
-
-          {/* Floating card: "Diseño Gráfico" label */}
-          <div className="hero-float-card hero-float-card--top">
-            <span className="hero-float-card__icon">✦</span>
-            <span>Branding & Editorial</span>
-          </div>
-
-          {/* Floating card: "Social Media" label */}
-          <div className="hero-float-card hero-float-card--bottom">
-            <span className="hero-float-card__icon">◈</span>
-            <span>Social Media</span>
-          </div>
-        </div>
       </div>
 
       {/* Scroll indicator */}

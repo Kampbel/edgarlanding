@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUp, Globe } from 'lucide-react';
 import LinkedinIcon from './LinkedinIcon';
 
-export default function Footer() {
+export default function Footer({ showAcademic = true, showContact = true }) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -45,11 +45,13 @@ export default function Footer() {
                   Proyectos
                 </a>
               </li>
-              <li>
-                <a href="#contacto" onClick={(e) => { e.preventDefault(); const el = document.getElementById('contacto'); if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' }); }}>
-                  Contacto
-                </a>
-              </li>
+              {showContact && (
+                <li>
+                  <a href="#contacto" onClick={(e) => { e.preventDefault(); const el = document.getElementById('contacto'); if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' }); }}>
+                    Contacto
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
 

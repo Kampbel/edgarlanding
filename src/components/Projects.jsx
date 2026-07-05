@@ -234,10 +234,7 @@ function BrandCard({ brand, onSelectProject, index }) {
   return (
     <div className={`brand-card reveal ${isReversed ? 'brand-card--reversed' : ''}`}>
       
-      {/* Local progress bar at the top of the card */}
-      <div className="brand-card__progress">
-        <div className="brand-card__progress-fill" style={{ width: `${progress}%` }} />
-      </div>
+
 
       {/* LEFT / RIGHT: Image Carousel */}
       <div
@@ -271,18 +268,7 @@ function BrandCard({ brand, onSelectProject, index }) {
               <ChevronRight size={20} />
             </button>
             
-            {/* Slide thumbnails inside card */}
-            <div className="brand-card__thumb-strip">
-              {brand.images.map((img, i) => (
-                <button
-                  key={i}
-                  className={`brand-card__thumb ${i === currentSlide ? 'active' : ''}`}
-                  onClick={(e) => { e.stopPropagation(); setCurrentSlide(i); }}
-                >
-                  <img src={img} alt={`miniature ${i + 1}`} />
-                </button>
-              ))}
-            </div>
+
           </>
         )}
       </div>

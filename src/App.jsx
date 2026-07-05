@@ -8,6 +8,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
 
+// Toggles to enable or disable sections (set to true to reactivate)
+const ENABLE_ACADEMIC_SECTION = false;
+const ENABLE_CONTACT_SECTION = false;
+
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -52,12 +56,12 @@ function App() {
   return (
     <>
       {/* Sticky Header Navigation */}
-      <Header />
+      <Header showAcademic={ENABLE_ACADEMIC_SECTION} showContact={ENABLE_CONTACT_SECTION} />
 
       {/* Main Sections */}
       <main>
         {/* Hero Section */}
-        <Hero />
+        <Hero showContact={ENABLE_CONTACT_SECTION} />
 
         {/* About Me Section */}
         <About />
@@ -66,14 +70,18 @@ function App() {
         <Projects onSelectProject={handleSelectProject} />
 
         {/* Academic Projects Section */}
-        <Academic onSelectProject={handleSelectProject} />
+        {ENABLE_ACADEMIC_SECTION && (
+          <Academic onSelectProject={handleSelectProject} />
+        )}
 
         {/* Contact Form Section */}
-        <Contact />
+        {ENABLE_CONTACT_SECTION && (
+          <Contact />
+        )}
       </main>
 
       {/* Footer Section */}
-      <Footer />
+      <Footer showAcademic={ENABLE_ACADEMIC_SECTION} showContact={ENABLE_CONTACT_SECTION} />
 
       {/* Lightbox Modal (Conditional Render) */}
       {selectedProject && (

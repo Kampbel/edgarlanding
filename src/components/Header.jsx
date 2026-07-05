@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
-export default function Header() {
+export default function Header({ showAcademic = true, showContact = true }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
@@ -16,7 +16,9 @@ export default function Header() {
       }
 
       // Active section calculation
-      const sections = ['inicio', 'sobre-mi', 'proyectos', 'academico', 'contacto'];
+      const sections = ['inicio', 'sobre-mi', 'proyectos'];
+      if (showAcademic) sections.push('academico');
+      if (showContact) sections.push('contacto');
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -34,7 +36,7 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showAcademic, showContact]);
 
   const scrollTo = (id) => {
     setIsOpen(false);
@@ -57,7 +59,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="nav-desktop">
           <ul className="nav-links">
-            {['inicio', 'sobre-mi', 'proyectos', 'academico', 'contacto'].map((sec) => (
+            {['inicio', 'sobre-mi', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
               <li key={sec}>
                 <a
                   href={`#${sec}`}
@@ -93,7 +95,7 @@ export default function Header() {
       {/* Mobile Navigation */}
       <div className={`nav-mobile ${isOpen ? 'open' : ''}`}>
         <ul className="nav-mobile-links">
-          {['inicio', 'sobre-mi', 'proyectos', 'academico', 'contacto'].map((sec) => (
+          {['inicio', 'sobre-mi', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
             <li key={sec}>
               <a
                 href={`#${sec}`}
