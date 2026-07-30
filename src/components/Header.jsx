@@ -16,7 +16,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
       }
 
       // Active section calculation
-      const sections = ['inicio', 'sobre-mi', 'proyectos'];
+      const sections = ['inicio', 'sobre-mi', 'cv', 'proyectos'];
       if (showAcademic) sections.push('academico');
       if (showContact) sections.push('contacto');
       const scrollPosition = window.scrollY + 100;
@@ -59,7 +59,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
         {/* Desktop Navigation */}
         <nav className="nav-desktop">
           <ul className="nav-links">
-            {['inicio', 'sobre-mi', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
+            {['inicio', 'sobre-mi', 'cv', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
               <li key={sec}>
                 <a
                   href={`#${sec}`}
@@ -70,6 +70,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
                   }}
                 >
                   {sec === 'sobre-mi' ? 'Sobre Mí'
+                    : sec === 'cv' ? 'CV'
                     : sec === 'academico' ? 'Académico'
                     : sec.charAt(0).toUpperCase() + sec.slice(1)}
                 </a>
@@ -95,7 +96,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
       {/* Mobile Navigation */}
       <div className={`nav-mobile ${isOpen ? 'open' : ''}`}>
         <ul className="nav-mobile-links">
-          {['inicio', 'sobre-mi', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
+          {['inicio', 'sobre-mi', 'cv', 'proyectos', ...(showAcademic ? ['academico'] : []), ...(showContact ? ['contacto'] : [])].map((sec) => (
             <li key={sec}>
               <a
                 href={`#${sec}`}
@@ -106,6 +107,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
                 }}
               >
                 {sec === 'sobre-mi' ? 'Sobre Mí'
+                  : sec === 'cv' ? 'CV'
                   : sec === 'academico' ? 'Académico'
                   : sec.charAt(0).toUpperCase() + sec.slice(1)}
               </a>

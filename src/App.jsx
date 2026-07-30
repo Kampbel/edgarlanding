@@ -4,13 +4,14 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Academic from './components/Academic';
+import CVSection from './components/CVSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
 
 // Toggles to enable or disable sections (set to true to reactivate)
-const ENABLE_ACADEMIC_SECTION = false;
-const ENABLE_CONTACT_SECTION = false;
+const ENABLE_ACADEMIC_SECTION = true;
+const ENABLE_CONTACT_SECTION = true;
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -65,6 +66,9 @@ function App() {
 
         {/* About Me Section */}
         <About />
+
+        {/* Curriculum Vitae & QR Code Section */}
+        <CVSection />
 
         {/* Social Media Projects Section */}
         <Projects onSelectProject={handleSelectProject} />

@@ -4369,3 +4369,182 @@ a.contact-detail-value:hover {
 @media (max-width: 380px) {
   .brand-card__carousel { aspect-ratio: 1 / 1; }
 }
+
+/* ================================================================
+   CV SECTION STYLES
+   ================================================================ */
+.cv-section {
+  padding: 6rem 0;
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+.cv-section-desc {
+  max-width: 650px;
+  margin: 1rem auto 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.cv-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: stretch;
+}
+
+.cv-info-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(30, 66, 217, 0.08);
+  color: var(--accent);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+}
+
+.cv-card-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.cv-card-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.cv-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cv-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.cv-feature-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cv-actions {
+  margin-top: auto;
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-size: 0.95rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cv-qr-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.cv-qr-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.cv-qr-header-icon {
+  color: var(--accent);
+}
+
+.cv-qr-image-wrapper {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.cv-qr-image-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.cv-qr-image {
+  width: 180px;
+  height: 180px;
+  display: block;
+  object-fit: contain;
+}
+
+.cv-qr-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.cv-qr-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.cv-qr-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .cv-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .cv-info-card {
+    padding: 2rem;
+  }
+}
+

@@ -14,7 +14,7 @@ const academicProjects = [
     subtitle: 'Proyecto Creare',
     category: 'publicidad',
     type: 'académico',
-    description: 'Póster de la discografía de Juan Luis guerra proyecto de creare con Galería 360 para homenajear la discografía y trayectoria del artista.',
+    description: 'Póster de la discografía de Juan Luis Guerra proyecto de Creare con Galería 360 para homenajear la discografía y trayectoria del artista.',
     images: ['/images/TRABAJOS ACADEMICOS/PUBLICIDAD/FOTOS DE MIS PROYECTOS _PUBLICIDAD 1.png'],
     tools: ['Ps'],
     year: '2024',
@@ -38,7 +38,7 @@ const academicProjects = [
     type: 'académico',
     description: 'Proyecto académico realizado para dar otro mensaje al público de cosas que no se ven a simple vista.',
     images: ['/images/TRABAJOS ACADEMICOS/PUBLICIDAD/FOTOS DE MIS PROYECTOS _PUBLICIDAD 3.png'],
-    tools: ['Ai'],
+    tools: ['Ps'],
     year: '2024',
   },
   {
@@ -58,7 +58,7 @@ const academicProjects = [
     subtitle: 'Hotel y Resort',
     category: 'branding',
     type: 'académico',
-    description: 'Hotel y resort ficticia inspirado en la flor nacional de la República Dominicana una propuesta ficticia creada para un proyecto académico.',
+    description: 'Hotel y resort ficticia inspirado en la flor nacional de la República Dominicana, una propuesta ficticia creada para un proyecto académico.',
     images: [
       '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _CAYENA 1.png',
       '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _CAYENA 2.png',
@@ -67,7 +67,24 @@ const academicProjects = [
       '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _CAYENA 5.png',
       '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _CAYENA 6.png',
     ],
-    tools: ['Ai', 'Ps'],
+    tools: ['Ps', 'Ai'],
+    year: '2023',
+  },
+  {
+    id: 'es-design',
+    title: 'ES DESIGN',
+    subtitle: 'Agencia de diseño',
+    category: 'branding',
+    type: 'académico',
+    description: 'Agencia ficticia de diseño creada para un proyecto académico.',
+    images: [
+      '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _ES DESING 1.png',
+      '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _ES DESING 2.png',
+      '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _ES DESING 3.png',
+      '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _ES DESING 4.png',
+      '/images/TRABAJOS ACADEMICOS/BRANDING/FOTOS DE MIS PROYECTOS _ES DESING 5.png',
+    ],
+    tools: ['Ps', 'Ai', 'Cv'],
     year: '2023',
   },
   {
@@ -253,11 +270,6 @@ export default function Academic({ onSelectProject }) {
 
         {/* ── Main card ── */}
         <div className="academic-carousel-container reveal">
-
-          {/* Progress bar */}
-          <div className="academic-progress-bar">
-            <div className="academic-progress-fill" style={{ width: `${progress}%` }} />
-          </div>
 
           <div className={`academic-carousel-card ${isTransitioning ? 'ac-fade-out' : 'ac-fade-in'}`}>
 
