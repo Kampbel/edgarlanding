@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Globe, AlertCircle, RefreshCw } from 'lucide-react';
 import LinkedinIcon from './LinkedinIcon';
 
 export default function Contact() {
@@ -12,6 +12,9 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const targetEmail = 'edgarsnt7@gmail.com';
 
   const handleChange = (e) => {
     setFormState({
@@ -20,19 +23,48 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate sending email
-    setTimeout(() => {
+    setErrorMessage('');
+    setIsSent(false);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Nombre: formState.name,
+          Email: formState.email,
+          _subject: `[Portafolio Web] ${formState.subject || 'Nuevo mensaje'}`,
+          Asunto: formState.subject,
+          Mensaje: formState.message,
+          _captcha: 'false'
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok || data.success === 'true' || data.success === true) {
+        setIsSent(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(data.message || 'No se pudo enviar el mensaje.');
+      }
+    } catch (err) {
+      console.error('Error al enviar el formulario:', err);
+      setErrorMessage('Ocurrió un error al enviar el formulario por la red. Puedes enviar tu mensaje directamente por tu cliente de correo.');
+    } finally {
       setIsSubmitting(false);
-      setIsSent(true);
-      setFormState({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5s
-      setTimeout(() => setIsSent(false), 5000);
-    }, 1800);
+    }
+  };
+
+  const handleMailtoFallback = () => {
+    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(formState.subject || 'Contacto Web')}&body=${encodeURIComponent(`Nombre: ${formState.name}\nCorreo: ${formState.email}\n\nMensaje:\n${formState.message}`)}`;
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -176,13 +208,44 @@ export default function Contact() {
                 ></textarea>
               </div>
 
+              {isSent && (
+                <div className="form-status-alert success">
+                  <CheckCircle size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <strong>¡Mensaje enviado con éxito!</strong>
+                    <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem' }}>
+                      Tu mensaje se envió directamente al correo <strong>{targetEmail}</strong>. Te responderé a la brevedad.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {errorMessage && (
+                <div className="form-status-alert error">
+                  <AlertCircle size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <strong>Error al enviar</strong>
+                    <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem' }}>{errorMessage}</p>
+                    <button 
+                      type="button" 
+                      onClick={handleMailtoFallback}
+                      className="form-status-fallback-btn"
+                    >
+                      <Mail size={14} /> Enviar directamente vía Email
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <button 
                 type="submit" 
                 className={`btn btn-primary form-submit-btn ${isSubmitting ? 'submitting' : ''}`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <>Enviando...</>
+                  <>
+                    <RefreshCw size={18} className="spin-icon" /> Enviando...
+                  </>
                 ) : isSent ? (
                   <>
                     <CheckCircle size={18} /> ¡Mensaje Enviado!
