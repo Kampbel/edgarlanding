@@ -2,25 +2,9 @@
 <html lang="es">
 
 <head>
-  <!-- Favicon Adapts Automatically to Light & Dark Mode -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="alternate icon" type="image/png" href="/images/logo.png" />
-  <script>
-    (function() {
-      function updateFavicon(e) {
-        const isDark = e ? e.matches : window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const icon = document.querySelector("link[rel='icon']");
-        if (icon) {
-          icon.setAttribute('href', '/favicon.svg?v=' + (isDark ? 'dark' : 'light'));
-        }
-      }
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      updateFavicon(mediaQuery);
-      if (mediaQuery.addEventListener) {
-        mediaQuery.addEventListener('change', updateFavicon);
-      }
-    })();
-  </script>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts Optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
