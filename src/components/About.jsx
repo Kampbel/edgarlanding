@@ -46,22 +46,22 @@ const softwareTools = [
 const experience = [
   {
     company: 'Ek Kreative Digital Group',
-    role: 'Community Manager / Gestión de Proyecto',
+    role: 'Community Manager / Gestión de Proyectos',
     type: 'Agencia de Publicidad, Social Media & Marketing Digital',
     period: 'Oct. 2024 – Ene. 2025',
     duties: [
-      'Diseñador gráfico de proyectos de rebranding de marca',
-      'Gestión de comunidades digitales en redes sociales',
+      'Diseño gráfico estratégico para proyectos de rebranding de marca',
+      'Gestión integral de comunidades digitales y contenido para redes sociales',
     ],
   },
   {
     company: 'Editable SRL',
     role: 'Diseñador Jr.',
-    type: 'Agencia de Publicidad | Digital Marketing | Redes Sociales | Videos | Fotos',
+    type: 'Agencia de Publicidad & Marketing Digital',
     period: 'Jul. 2025 – Presente',
     duties: [
-      'Diseñador gráfico de redes sociales',
-      'Creación de piezas gráficas para múltiples clientes',
+      'Diseño visual para campañas estratégicas en redes sociales',
+      'Creación de piezas gráficas multiformato para diversas marcas de alto perfil',
     ],
   },
 ];
@@ -186,7 +186,7 @@ export default function About() {
 
             <h3 className="about-heading">Edgar Joel Santos Cuevas</h3>
             <p className="about-text">
-              Soy un estudiante de diseñador gráfico resido en Santo Domingo D. N. Tengo 23 años. Me considero una persona comunicativa, perseverante, con buen manejo de tiempos y mucha iniciativa. Me desenvuelvo bien en trabajos de equipo o por mi propia cuenta, soy responsable, minucioso, y trabajador. Mi capacidad para investigar, aprender y ahondar en varios temas son un aporte a mi carrera y realizar mi valor como diseñador.
+              Soy estudiante de Diseño Gráfico radicado en Santo Domingo, República Dominicana. Me caracterizo por ser un profesional comunicativo, perseverante y proactivo, con un sólido manejo del tiempo y mucha iniciativa. Me desenvuelvo con solvencia tanto en equipos de trabajo como de manera autónoma, aportando siempre un enfoque responsable, meticuloso y detallista. Mi capacidad constante para investigar, aprender y profundizar en diversos temas enriquece mi propuesta creativa y consolida mi valor como diseñador.
             </p>
 
 

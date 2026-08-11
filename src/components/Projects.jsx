@@ -6,7 +6,7 @@ import LinkedinIcon from './LinkedinIcon';
 const professionalBrands = [
   {
     id: 'honda',
-    title: 'Honda rent car',
+    title: 'Honda Rent Car',
     subtitle: 'Alquiler de automóviles',
     category: 'social-media',
     type: 'profesional',
@@ -27,7 +27,7 @@ const professionalBrands = [
   },
   {
     id: 'cocovet',
-    title: 'Coco vet',
+    title: 'Coco Vet',
     subtitle: 'Diseño de identidad visual para redes sociales enfocado en transmitir confianza y profesionalismo.',
     category: 'social-media',
     type: 'profesional',
@@ -133,11 +133,11 @@ const professionalBrands = [
   },
   {
     id: 'cesfront',
-    title: 'CESFRONT',
+    title: 'Cesfront',
     subtitle: 'Cuerpo Especializado de Seguridad Fronteriza Terrestre',
     category: 'social-media',
     type: 'profesional',
-    description: 'Desarrollo de comunicación visual institucional y conmemorativa. Para el CESFRONT, el enfoque consistió en proyectar respeto, solemnidad y patriotismo. Me encargué del diseño gráfico de efemérides, hitos históricos y celebraciones institucionales, utilizando una línea visual clásica y formal. El trabajo destaca por la integración cuidadosa de símbolos patrios, tipografías tradicionales e imágenes históricas para honrar la identidad militar y nacional.',
+    description: 'Desarrollo de comunicación visual institucional y conmemorativa. Para el Cesfront, el enfoque consistió en proyectar respeto, solemnidad y patriotismo. Me encargué del diseño gráfico de efemérides, hitos históricos y celebraciones institucionales, utilizando una línea visual clásica y formal. El trabajo destaca por la integración cuidadosa de símbolos patrios, tipografías tradicionales e imágenes históricas para honrar la identidad militar y nacional.',
     tools: ['Ps', 'Ai'],
     logo: '/images/Portafolio/Proyectos/Evidencias/Trabajos_Profesionales_Social_Media/Imagenes/Captura de pantalla 2026-06-27 192712.png',
     images: [

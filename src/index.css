@@ -98,7 +98,6 @@ body {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: 4px;
   cursor: pointer;
@@ -143,7 +142,6 @@ body {
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--accent-light);
-  text-transform: uppercase;
   letter-spacing: 0.2em;
   margin-bottom: 0.5rem;
   display: block;
@@ -237,7 +235,6 @@ body {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.75); /* white / slightly transparent over hero */
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   position: relative;
   padding: 0.5rem 0;
@@ -272,7 +269,6 @@ body {
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.5rem 1.25rem;
@@ -355,7 +351,6 @@ body {
   font-weight: 700;
   color: var(--text-secondary);
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: color var(--transition-fast);
   display: block;
@@ -1325,7 +1320,6 @@ body {
   font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--text-muted);
   padding-bottom: 0.75rem;
@@ -1393,7 +1387,6 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
@@ -1586,7 +1579,6 @@ body {
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.75rem 2rem;
   border-radius: 30px;
@@ -1629,7 +1621,6 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   display: flex;
   align-items: center;
@@ -1650,7 +1641,6 @@ body {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.4rem 1.25rem;
   border-radius: 4px;
@@ -1740,7 +1730,6 @@ body {
 .project-tag {
   font-size: 0.6rem;
   font-weight: 800;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #fff;
   background: var(--accent);
@@ -1785,7 +1774,6 @@ body {
 .project-category {
   font-size: 0.65rem;
   font-weight: 700;
-  text-transform: uppercase;
   color: var(--accent-light);
   letter-spacing: 0.1em;
 }
@@ -1978,7 +1966,6 @@ body {
 .lightbox-tag-scope {
   font-size: 0.6rem;
   font-weight: 800;
-  text-transform: uppercase;
   color: #fff;
   background: var(--accent);
   padding: 0.25rem 0.75rem;
@@ -1998,7 +1985,6 @@ body {
 .lightbox-category-text {
   font-size: 0.7rem;
   font-weight: 700;
-  text-transform: uppercase;
   color: var(--accent-light);
   letter-spacing: 0.1em;
 }
@@ -2139,7 +2125,6 @@ body {
 .contact-detail-label {
   font-size: 0.7rem;
   color: var(--text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   display: block;
   margin-bottom: 0.15rem;
@@ -2169,7 +2154,6 @@ a.contact-detail-value:hover {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
@@ -2294,7 +2278,6 @@ a.contact-detail-value:hover {
 .form-label {
   font-size: 0.72rem;
   font-weight: 750;
-  text-transform: uppercase;
   color: var(--accent); /* Cobalt blue labels */
   letter-spacing: 0.08em;
 }
@@ -2485,7 +2468,6 @@ a.contact-detail-value:hover {
   font-family: var(--font-heading);
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.14em;
   color: rgba(240, 237, 232, 0.4);
   margin-bottom: 1.25rem;
@@ -2557,7 +2539,6 @@ a.contact-detail-value:hover {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   display: flex;
   align-items: center;
@@ -2645,7 +2626,6 @@ a.contact-detail-value:hover {
 .brand-portfolio-category-label {
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.15em;
   display: block;
@@ -2864,7 +2844,6 @@ a.contact-detail-value:hover {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
@@ -3023,7 +3002,6 @@ a.contact-detail-value:hover {
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: opacity var(--transition-fast);
   padding: 1rem;
@@ -3281,7 +3259,6 @@ a.contact-detail-value:hover {
 }
 
 .brand-card__category {
-  text-transform: uppercase;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -3619,7 +3596,6 @@ a.contact-detail-value:hover {
 .brand-card__zoom-hint span {
   font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #fff;
 }
@@ -3720,6 +3696,22 @@ a.contact-detail-value:hover {
   font-weight: 300;
 }
 
+.brand-card__subtitle {
+  font-family: var(--font-subtitle);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: -0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.brand-card__description {
+  font-size: clamp(0.9rem, 1.5vw, 0.98rem);
+  line-height: 1.82;
+  color: var(--text-secondary);
+  letter-spacing: 0.015em;
+}
+
 .brand-card__index-total {
   font-family: var(--font-heading);
   font-size: 1.2rem;
@@ -3734,7 +3726,6 @@ a.contact-detail-value:hover {
   gap: 0.45rem;
   font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #2b5cff;
   border: 1px solid rgba(43, 92, 255, 0.15);
@@ -4020,7 +4011,6 @@ a.contact-detail-value:hover {
 .academic-gallery-hint span {
   font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #fff;
 }
@@ -4106,7 +4096,6 @@ a.contact-detail-value:hover {
   gap: 0.45rem;
   font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--badge-clr, #769bff);
   border: 1px solid rgba(from var(--badge-clr) r g b / 0.3);
@@ -4127,7 +4116,6 @@ a.contact-detail-value:hover {
 .academic-carousel-badge {
   font-size: 0.7rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.15em;
   color: rgba(118, 155, 255, 0.9);
   width: fit-content;
@@ -4206,9 +4194,10 @@ a.contact-detail-value:hover {
 }
 
 .academic-carousel-desc {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: rgba(240, 237, 232, 0.65);
+  font-size: 0.98rem;
+  line-height: 1.82;
+  color: rgba(240, 237, 232, 0.85);
+  letter-spacing: 0.015em;
 }
 
 .academic-carousel-view-btn {
@@ -4606,3 +4595,9 @@ a.contact-detail-value:hover {
   }
 }
 
+
+
+/* Hero buttons uppercase override */
+.hero .btn {
+  text-transform: uppercase;
+}

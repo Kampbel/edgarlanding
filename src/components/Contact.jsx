@@ -80,7 +80,7 @@ export default function Contact() {
           <div className="contact-info-panel reveal">
             <h3 className="contact-info-title">¿Tienes una idea en mente?</h3>
             <p className="contact-info-text">
-              Estoy disponible para trabajos de diseño freelance, contratos de consultoría o simplemente para charlar sobre ideas creativas. Escríbeme y le daremos forma a tus conceptos.
+              ¿Tienes un proyecto en mente o buscas potenciar la imagen de tu marca? Estoy disponible para colaboraciones freelance, identidades visuales y consultoría de diseño. Escríbeme y demos forma a tus ideas con soluciones visuales de alto impacto.
             </p>
 
             <div className="contact-details-list">
@@ -145,7 +145,7 @@ export default function Contact() {
               </div>
               <div className="contact-qr-info">
                 <span className="contact-qr-title">Escríbeme por WhatsApp</span>
-                <span className="contact-qr-desc">Escanea el código QR o haz clic en el número de teléfono para iniciar un chat directo de forma instantánea.</span>
+                <span className="contact-qr-desc">Escanea este código QR desde tu móvil o haz clic en el número telefónico para iniciar una conversación directa en WhatsApp.</span>
               </div>
             </div>
           </div>

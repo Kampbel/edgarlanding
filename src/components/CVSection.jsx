@@ -16,7 +16,7 @@ export default function CVSection() {
             Mi <span className="title-gradient">Trayectoria</span> Profesional
           </h2>
           <p className="cv-section-desc">
-            Consulta o descarga mi CV completo para conocer a detalle mi formación académica, experiencia laboral, habilidades técnicas y proyectos.
+            Explora o descarga mi currículum vitae completo para conocer en detalle mi formación académica, experiencia profesional en agencias, competencias técnicas y proyectos clave.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export default function CVSection() {
             </div>
 
             <p className="cv-qr-caption">
-              Escanea este código QR con la cámara de tu smartphone para abrir mi CV directamente en Google Drive.
+              Escanea este código QR desde tu dispositivo móvil para acceder a mi CV digital de forma inmediata en Google Drive.
             </p>
 
             <a 
@@ -92,7 +92,7 @@ export default function CVSection() {
               rel="noopener noreferrer" 
               className="cv-qr-link"
             >
-              Abri enlace directo <ExternalLink size={12} />
+              Abrir enlace directo <ExternalLink size={12} />
             </a>
           </div>
 
