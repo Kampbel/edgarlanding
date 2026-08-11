@@ -244,9 +244,9 @@ export default function Academic({ onSelectProject }) {
         {/* ── Section header ── */}
         <div className="academic-header reveal">
           <div className="academic-header__left">
-            <span className="section-subtitle">Portafolio Académico</span>
+            <span className="section-subtitle">Portafolio académico</span>
             <h2 className="section-title">
-              Trabajos <span className="title-gradient">Académicos</span>
+              Trabajos <span className="title-gradient">académicos</span>
             </h2>
             <p className="academic-header__desc">
               Proyectos desarrollados durante mi formación académica: branding, diseño editorial y campañas publicitarias

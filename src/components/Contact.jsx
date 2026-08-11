@@ -72,7 +72,7 @@ export default function Contact() {
       <div className="container">
         <div className="section-header reveal">
           <span className="section-subtitle">Contacto</span>
-          <h2 className="section-title">Hablemos de tu <span className="title-gradient">Proyecto</span></h2>
+          <h2 className="section-title">Hablemos de tu <span className="title-gradient">proyecto</span></h2>
         </div>
 
         <div className="contact-grid">
@@ -154,7 +154,7 @@ export default function Contact() {
           <div className="contact-form-panel reveal">
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
-                <label htmlFor="name" className="form-label">Nombre Completo</label>
+                <label htmlFor="name" className="form-label">Nombre completo</label>
                 <input 
                   type="text" 
                   id="name" 
@@ -168,7 +168,7 @@ export default function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email" className="form-label">Correo Electrónico</label>
+                <label htmlFor="email" className="form-label">Correo electrónico</label>
                 <input 
                   type="email" 
                   id="email" 
@@ -189,7 +189,7 @@ export default function Contact() {
                   name="subject" 
                   value={formState.subject} 
                   onChange={handleChange}
-                  placeholder="Ej. Diseño de Branding para mi marca" 
+                  placeholder="Ej. Diseño de branding para mi marca" 
                   className="form-input" 
                   required
                 />
@@ -231,7 +231,7 @@ export default function Contact() {
                       onClick={handleMailtoFallback}
                       className="form-status-fallback-btn"
                     >
-                      <Mail size={14} /> Enviar directamente vía Email
+                      <Mail size={14} /> Enviar directamente vía correo electrónico
                     </button>
                   </div>
                 </div>
@@ -248,11 +248,11 @@ export default function Contact() {
                   </>
                 ) : isSent ? (
                   <>
-                    <CheckCircle size={18} /> ¡Mensaje Enviado!
+                    <CheckCircle size={18} /> ¡Mensaje enviado!
                   </>
                 ) : (
                   <>
-                    Enviar Mensaje <Send size={14} />
+                    Enviar mensaje <Send size={14} />
                   </>
                 )}
               </button>

@@ -11,9 +11,9 @@ export default function CVSection() {
         
         {/* Section Header */}
         <div className="section-header reveal">
-          <span className="section-subtitle">Currículum Vitae</span>
+          <span className="section-subtitle">Currículum vitae</span>
           <h2 className="section-title">
-            Mi <span className="title-gradient">Trayectoria</span> Profesional
+            Mi <span className="title-gradient">trayectoria</span> profesional
           </h2>
           <p className="cv-section-desc">
             Explora o descarga mi currículum vitae completo para conocer en detalle mi formación académica, experiencia profesional en agencias, competencias técnicas y proyectos clave.
@@ -27,20 +27,20 @@ export default function CVSection() {
           <div className="cv-info-card">
             <div className="cv-badge">
               <FileText size={16} />
-              <span>Documento PDF Oficial</span>
+              <span>Documento PDF oficial</span>
             </div>
 
             <h3 className="cv-card-title">Edgar Joel Santos Cuevas</h3>
-            <p className="cv-card-subtitle">Diseñador Gráfico & Creativo Visual</p>
+            <p className="cv-card-subtitle">Diseñador gráfico & creativo visual</p>
             
             <div className="cv-features-list">
               <div className="cv-feature-item">
                 <CheckCircle2 size={16} className="cv-feature-icon" />
-                <span>Formación Académica en Diseño Gráfico</span>
+                <span>Formación académica en diseño gráfico</span>
               </div>
               <div className="cv-feature-item">
                 <CheckCircle2 size={16} className="cv-feature-icon" />
-                <span>Experiencia en Agencias de Publicidad & Social Media</span>
+                <span>Experiencia en agencias de publicidad & social media</span>
               </div>
               <div className="cv-feature-item">
                 <CheckCircle2 size={16} className="cv-feature-icon" />
@@ -48,7 +48,7 @@ export default function CVSection() {
               </div>
               <div className="cv-feature-item">
                 <CheckCircle2 size={16} className="cv-feature-icon" />
-                <span>Branding, Identidad Visual y Diseño Editorial</span>
+                <span>Branding, identidad visual y diseño editorial</span>
               </div>
             </div>
 
@@ -60,7 +60,7 @@ export default function CVSection() {
                 className="btn btn-primary cv-download-btn"
               >
                 <Download size={18} />
-                <span>Ver / Descargar CV (PDF)</span>
+                <span>Ver / descargar CV (PDF)</span>
                 <ExternalLink size={14} />
               </a>
             </div>
@@ -70,7 +70,7 @@ export default function CVSection() {
           <div className="cv-qr-card">
             <div className="cv-qr-header">
               <QrCode size={20} className="cv-qr-header-icon" />
-              <span>Código QR de Acceso Rápido</span>
+              <span>Código QR de acceso rápido</span>
             </div>
             
             <div className="cv-qr-image-wrapper">

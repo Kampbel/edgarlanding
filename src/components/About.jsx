@@ -100,7 +100,7 @@ export default function About() {
         {/* ─ Section Header ─ */}
         <div className="section-header reveal">
           <span className="section-subtitle">Conóceme</span>
-          <h2 className="section-title">Sobre <span className="title-gradient">Mí</span></h2>
+          <h2 className="section-title">Sobre <span className="title-gradient">mí</span></h2>
         </div>
 
         {/* ─ Two-column layout ─ */}
@@ -122,7 +122,7 @@ export default function About() {
             <div className="quick-stats">
               <div className="stat-item">
                 <Briefcase className="stat-item__icon" size={14} />
-                <span className="stat-item__text"><strong>1 Año</strong> de Experiencia</span>
+                <span className="stat-item__text"><strong>1 año</strong> de experiencia</span>
               </div>
               <div className="stat-item">
                 <MapPin className="stat-item__icon" size={14} />
@@ -134,7 +134,7 @@ export default function About() {
             <div className="about-block" style={{ width: '100%' }}>
               <h4 className="about-block-title">
                 <span className="about-block-title__bar" />
-                Software & Herramientas
+                Software & herramientas
               </h4>
               <div className="software-grid">
                 {softwareTools.map((tool) => (
@@ -195,7 +195,7 @@ export default function About() {
             <div className="about-block">
               <h4 className="about-block-title">
                 <span className="about-block-title__bar" />
-                Experiencia Laboral
+                Experiencia laboral
               </h4>
               <div className="exp-list">
                 {experience.map((job, i) => (

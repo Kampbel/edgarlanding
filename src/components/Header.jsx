@@ -69,7 +69,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
                     scrollTo(sec);
                   }}
                 >
-                  {sec === 'sobre-mi' ? 'Sobre Mí'
+                  {sec === 'sobre-mi' ? 'Sobre mí'
                     : sec === 'cv' ? 'CV'
                     : sec === 'academico' ? 'Académico'
                     : sec.charAt(0).toUpperCase() + sec.slice(1)}
@@ -106,7 +106,7 @@ export default function Header({ showAcademic = true, showContact = true }) {
                   scrollTo(sec);
                 }}
               >
-                {sec === 'sobre-mi' ? 'Sobre Mí'
+                {sec === 'sobre-mi' ? 'Sobre mí'
                   : sec === 'cv' ? 'CV'
                   : sec === 'academico' ? 'Académico'
                   : sec.charAt(0).toUpperCase() + sec.slice(1)}
