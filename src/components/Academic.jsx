@@ -253,19 +253,6 @@ export default function Academic({ onSelectProject }) {
               que sientan las bases conceptuales y técnicas de mi práctica profesional.
             </p>
           </div>
-
-          {/* Filter bar */}
-          <div className="academic-filters">
-            {FILTERS.map(f => (
-              <button
-                key={f}
-                className={`academic-filter-btn ${activeFilter === f ? 'active' : ''}`}
-                onClick={() => { setActiveFilter(f); setCurrentIndex(0); }}
-              >
-                {f === 'todos' ? 'Todos' : CATEGORY_META[f]?.label || f}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* ── Main card ── */}
@@ -286,12 +273,6 @@ export default function Academic({ onSelectProject }) {
                 <span className="academic-counter__current">{String(currentIndex + 1).padStart(2, '0')}</span>
                 <span className="academic-counter__sep">/</span>
                 <span className="academic-counter__total">{String(filtered.length).padStart(2, '0')}</span>
-              </div>
-
-              {/* Category badge with icon */}
-              <div className="academic-category-badge" style={{ '--badge-clr': catMeta.color || '#769bff' }}>
-                {CatIcon && <CatIcon size={12} />}
-                <span>{catMeta.label || project.category}</span>
               </div>
 
               <h3 className="academic-carousel-title">{project.title}</h3>
