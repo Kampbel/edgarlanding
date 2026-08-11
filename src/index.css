@@ -600,7 +600,7 @@ body {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  
   color: rgba(118, 155, 255, 0.9);
   margin-bottom: 1.5rem;
   border: 1px solid rgba(43, 92, 255, 0.25);
@@ -783,7 +783,7 @@ body {
   font-weight: 700;
   color: rgba(245, 243, 239, 0.85);
   letter-spacing: 0.06em;
-  text-transform: uppercase;
+  
   white-space: nowrap;
   z-index: 4;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -833,7 +833,7 @@ body {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
+  
   color: rgba(118, 155, 255, 0.85);
   margin-bottom: 2rem;
   border: 1px solid rgba(43, 92, 255, 0.25);
@@ -992,7 +992,7 @@ body {
 .hero-stat span {
   font-size: 0.72rem;
   font-weight: 600;
-  text-transform: uppercase;
+  
   letter-spacing: 0.12em;
   color: rgba(245, 243, 239, 0.45);
 }
@@ -1021,7 +1021,7 @@ body {
   color: rgba(245, 243, 239, 0.35);
   font-size: 0.6rem;
   font-weight: 700;
-  text-transform: uppercase;
+  
   letter-spacing: 0.18em;
   transition: color 0.2s ease;
 }
@@ -4674,5 +4674,5 @@ a.contact-detail-value:hover {
 
 /* Hero buttons uppercase override */
 .hero .btn {
-  text-transform: uppercase;
+  
 }

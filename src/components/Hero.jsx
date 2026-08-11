@@ -123,7 +123,7 @@ export default function Hero({ showContact = true }) {
 
           <div className="hero-role animate-fade-in-up-delay-2">
             <span className="hero-role__line" />
-            <span className="hero-role__text">Diseñador Gráfico</span>
+            <span className="hero-role__text">Diseñador gráfico</span>
           </div>
 
           <p className="hero-description animate-fade-in-up-delay-3">
@@ -133,7 +133,7 @@ export default function Hero({ showContact = true }) {
 
           <div className="hero-actions animate-fade-in-up-delay-4">
             <a href="#proyectos" className="hero-btn hero-btn--primary" onClick={e => scrollTo('proyectos', e)}>
-              Explorar Proyectos
+              Explorar proyectos
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a 
