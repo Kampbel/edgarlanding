@@ -136,14 +136,6 @@ export default function Hero({ showContact = true }) {
               Explorar proyectos
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a 
-              href="https://drive.google.com/file/d/1i84cKcV1xe_cDFNSvF4lyavu5DzQGSsR/view" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hero-btn hero-btn--ghost"
-            >
-              Ver CV (PDF)
-            </a>
             {showContact && (
               <a href="#contacto" className="hero-btn hero-btn--ghost" onClick={e => scrollTo('contacto', e)}>
                 Contacto
