@@ -286,7 +286,7 @@ function BrandCard({ brand, onSelectProject, index }) {
         {/* Category tag */}
         <div className="brand-card__category-badge">
           <InstagramIcon size={12} style={{ color: '#2b5cff' }} />
-          <span>Social Media</span>
+          <span>Social media</span>
         </div>
 
         <h3 className="brand-card__title">{brand.title}</h3>
@@ -366,7 +366,7 @@ export default function Projects({ onSelectProject }) {
         <div className="projects-header reveal">
           <div className="projects-header__left">
             <span className="section-subtitle">Portafolio</span>
-            <h2 className="section-title">Social <span className="title-gradient">Media</span></h2>
+            <h2 className="section-title">Social <span className="title-gradient">media</span></h2>
             <p className="projects-header__desc">
               Creación de contenido digital estratégico y a medida. Una selección de marcas que han
               confiado en mi visión gráfica para gestionar su presencia en redes sociales.

@@ -47,7 +47,7 @@ const experience = [
   {
     company: 'Ek Kreative Digital Group',
     role: 'Community Manager / Gestión de Proyectos',
-    type: 'Agencia de Publicidad, Social Media & Marketing Digital',
+    type: 'Agencia de publicidad, social media & marketing digital',
     period: 'Oct. 2024 – Ene. 2025',
     duties: [
       'Diseño gráfico estratégico para proyectos de rebranding de marca',
