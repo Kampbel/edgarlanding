@@ -196,15 +196,17 @@ function AcademicImageGallery({ project, onSelectProject }) {
 }
 
 // ── Main Academic section ──────────────────────────────────────────────────
-export default function Academic({ onSelectProject }) {
+export default function Academic({ onSelectProject, supabaseProjects = [] }) {
   const [activeFilter, setActiveFilter] = useState('todos');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const autoPlayRef = useRef(null);
 
+  const allProjects = [...supabaseProjects, ...academicProjects];
+
   const filtered = activeFilter === 'todos'
-    ? academicProjects
-    : academicProjects.filter(p => p.category === activeFilter);
+    ? allProjects
+    : allProjects.filter(p => p.category === activeFilter);
 
   useEffect(() => { setCurrentIndex(0); }, [activeFilter]);
 

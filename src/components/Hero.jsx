@@ -122,7 +122,6 @@ export default function Hero({ showContact = true }) {
           </h1>
 
           <div className="hero-role animate-fade-in-up-delay-2">
-            <span className="hero-role__line" />
             <span className="hero-role__text">Diseñador gráfico</span>
           </div>
 

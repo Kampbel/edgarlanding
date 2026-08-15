@@ -357,7 +357,9 @@ function BrandCard({ brand, onSelectProject, index }) {
 }
 
 // ── Main Projects Component ──────────────────────────────────────────────────
-export default function Projects({ onSelectProject }) {
+export default function Projects({ onSelectProject, supabaseProjects = [] }) {
+  const displayBrands = [...supabaseProjects, ...professionalBrands];
+
   return (
     <section id="proyectos" className="projects-section">
       <div className="container">
@@ -376,9 +378,9 @@ export default function Projects({ onSelectProject }) {
 
         {/* Alternating Brand Cards List */}
         <div className="brands-list" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-          {professionalBrands.map((brand, index) => (
+          {displayBrands.map((brand, index) => (
             <BrandCard
-              key={brand.id}
+              key={brand.id || index}
               brand={brand}
               index={index}
               onSelectProject={onSelectProject}

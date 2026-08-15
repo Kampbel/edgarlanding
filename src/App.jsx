@@ -8,6 +8,10 @@ import CVSection from './components/CVSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+import { fetchProjectsFromSupabase } from './services/projectsService';
+import { isSupabaseConfigured } from './lib/supabaseClient';
 
 // Toggles to enable or disable sections (set to true to reactivate)
 const ENABLE_ACADEMIC_SECTION = true;
@@ -15,6 +19,20 @@ const ENABLE_CONTACT_SECTION = true;
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isAdminLoginOpen, setIsAdminLoginOpen] = useState(false);
+  const [isAdminDashboardOpen, setIsAdminDashboardOpen] = useState(false);
+  const [supabaseProjects, setSupabaseProjects] = useState([]);
+
+  // Cargar proyectos dinámicos desde Supabase al iniciar
+  useEffect(() => {
+    if (isSupabaseConfigured()) {
+      fetchProjectsFromSupabase().then((data) => {
+        if (data && data.length > 0) {
+          setSupabaseProjects(data);
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -46,6 +64,40 @@ function App() {
     };
   }, []);
 
+  // Detección de ruta secreta /admin o #admin
+  useEffect(() => {
+    const checkAdminRoute = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (path === '/admin' || path === '/admin/' || hash === '#admin') {
+        setIsAdminLoginOpen(true);
+      }
+    };
+
+    checkAdminRoute();
+    window.addEventListener('popstate', checkAdminRoute);
+    window.addEventListener('hashchange', checkAdminRoute);
+
+    return () => {
+      window.removeEventListener('popstate', checkAdminRoute);
+      window.removeEventListener('hashchange', checkAdminRoute);
+    };
+  }, []);
+
+  const handleCloseAdminLogin = () => {
+    setIsAdminLoginOpen(false);
+    if (window.location.pathname.includes('/admin') || window.location.hash === '#admin') {
+      window.history.replaceState(null, '', '/');
+    }
+  };
+
+  const handleCloseAdminDashboard = () => {
+    setIsAdminDashboardOpen(false);
+    if (window.location.pathname.includes('/admin') || window.location.hash === '#admin') {
+      window.history.replaceState(null, '', '/');
+    }
+  };
+
   const handleSelectProject = (project) => {
     setSelectedProject(project);
   };
@@ -54,10 +106,22 @@ function App() {
     setSelectedProject(null);
   };
 
+  const handleAdminLoginSuccess = () => {
+    setIsAdminLoginOpen(false);
+    setIsAdminDashboardOpen(true);
+  };
+
+  const handleProjectsUpdated = (updatedList) => {
+    setSupabaseProjects(updatedList);
+  };
+
   return (
     <>
       {/* Sticky Header Navigation */}
-      <Header showAcademic={ENABLE_ACADEMIC_SECTION} showContact={ENABLE_CONTACT_SECTION} />
+      <Header 
+        showAcademic={ENABLE_ACADEMIC_SECTION} 
+        showContact={ENABLE_CONTACT_SECTION} 
+      />
 
       {/* Main Sections */}
       <main>
@@ -71,11 +135,17 @@ function App() {
         <CVSection />
 
         {/* Social Media Projects Section */}
-        <Projects onSelectProject={handleSelectProject} />
+        <Projects 
+          onSelectProject={handleSelectProject} 
+          supabaseProjects={supabaseProjects.filter(p => p.type === 'profesional')}
+        />
 
         {/* Academic Projects Section */}
         {ENABLE_ACADEMIC_SECTION && (
-          <Academic onSelectProject={handleSelectProject} />
+          <Academic 
+            onSelectProject={handleSelectProject} 
+            supabaseProjects={supabaseProjects.filter(p => p.type === 'academico')}
+          />
         )}
 
         {/* Contact Form Section */}
@@ -94,6 +164,20 @@ function App() {
           onClose={handleCloseLightbox} 
         />
       )}
+
+      {/* Admin Login Modal */}
+      <AdminLogin
+        isOpen={isAdminLoginOpen}
+        onClose={handleCloseAdminLogin}
+        onLoginSuccess={handleAdminLoginSuccess}
+      />
+
+      {/* Admin Dashboard Modal */}
+      <AdminDashboard
+        isOpen={isAdminDashboardOpen}
+        onClose={handleCloseAdminDashboard}
+        onProjectsUpdated={handleProjectsUpdated}
+      />
     </>
   );
 }

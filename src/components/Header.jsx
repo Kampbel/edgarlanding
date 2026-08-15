@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Lock } from 'lucide-react';
 
-export default function Header({ showAcademic = true, showContact = true }) {
+export default function Header({ showAcademic = true, showContact = true, onOpenAdmin }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');

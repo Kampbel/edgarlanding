@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, Globe, AlertCircle, RefreshCw } from 'lucide-react';
 import LinkedinIcon from './LinkedinIcon';
+import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -28,6 +29,30 @@ export default function Contact() {
     setIsSubmitting(true);
     setErrorMessage('');
     setIsSent(false);
+    let supabaseSuccess = false;
+
+    // Si Supabase está configurado, guardar mensaje en la base de datos
+    if (isSupabaseConfigured() && supabase) {
+      try {
+        const { error } = await supabase
+          .from('contact_messages')
+          .insert([
+            {
+              name: formState.name,
+              email: formState.email,
+              subject: formState.subject,
+              message: formState.message
+            }
+          ]);
+        if (!error) {
+          supabaseSuccess = true;
+        } else {
+          console.warn('Error al guardar en Supabase:', error.message);
+        }
+      } catch (sbErr) {
+        console.warn('Error de red al conectar con Supabase:', sbErr);
+      }
+    }
 
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
@@ -48,7 +73,7 @@ export default function Contact() {
 
       const data = await response.json();
 
-      if (response.ok || data.success === 'true' || data.success === true) {
+      if (response.ok || data.success === 'true' || data.success === true || supabaseSuccess) {
         setIsSent(true);
         setFormState({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -56,7 +81,12 @@ export default function Contact() {
       }
     } catch (err) {
       console.error('Error al enviar el formulario:', err);
-      setErrorMessage('Ocurrió un error al enviar el formulario por la red. Puedes enviar tu mensaje directamente por tu cliente de correo.');
+      if (supabaseSuccess) {
+        setIsSent(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setErrorMessage('Ocurrió un error al enviar el formulario por la red. Puedes enviar tu mensaje directamente por tu cliente de correo.');
+      }
     } finally {
       setIsSubmitting(false);
     }
